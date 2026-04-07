@@ -14,6 +14,7 @@
       --muted: #4b5563;
       --line: #e5e7eb;
       --accent: #111827;
+      --soft: #eef2ff;
       --warn: #fff7ed;
       --warn-line: #fed7aa;
       --danger: #7f1d1d;
@@ -27,8 +28,9 @@
     }
     a { color: inherit; text-decoration: none; }
     button, input, textarea, select { font: inherit; }
+    img { max-width: 100%; display: block; }
     .wrap {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -44,8 +46,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
       gap: 18px;
+      padding: 18px 0;
     }
     .brand {
       font-size: 18px;
@@ -54,14 +56,13 @@
     }
     .menu {
       display: flex;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 18px;
       color: var(--muted);
       font-size: 15px;
     }
     .hero {
       padding: 88px 0 68px;
-      border-top: none;
       background: var(--bg);
     }
     .eyebrow {
@@ -80,7 +81,7 @@
       letter-spacing: -0.04em;
     }
     .hero p {
-      max-width: 760px;
+      max-width: 780px;
       font-size: 19px;
       color: var(--muted);
     }
@@ -100,20 +101,25 @@
       justify-content: center;
       gap: 8px;
       font-weight: 600;
+      background: white;
     }
     .btn-dark {
       background: var(--accent);
       color: white;
     }
     .btn-light {
-      background: white;
       border-color: #d1d5db;
       color: var(--text);
     }
     .btn-danger {
-      background: white;
       border-color: #fecaca;
       color: var(--danger);
+      background: white;
+    }
+    .btn-small {
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 13px;
     }
     section {
       padding: 72px 0;
@@ -130,9 +136,9 @@
       letter-spacing: -0.03em;
     }
     .section-intro {
-      max-width: 760px;
+      max-width: 780px;
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       font-size: 17px;
     }
     .grid {
@@ -159,22 +165,71 @@
       color: var(--muted);
       font-size: 15px;
     }
-    .list-item {
-      padding: 18px 0;
-      border-top: 1px solid var(--line);
+    .item-grid {
+      display: grid;
+      gap: 16px;
     }
-    .list-item:first-child {
-      border-top: none;
-      padding-top: 0;
+    .item-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .item-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
     }
     .item-title {
       font-size: 19px;
       margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
     .item-meta {
       font-size: 14px;
       color: #6b7280;
       margin-bottom: 8px;
+    }
+    .item-desc {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .item-hint {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+    .photo-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .photo-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: white;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .photo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+    }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+    }
+    .photo-caption {
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--muted);
     }
     .link-list, .file-list {
       display: grid;
@@ -189,6 +244,7 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 14px;
+      cursor: pointer;
     }
     .link-item-title, .file-item-title {
       font-size: 17px;
@@ -198,30 +254,6 @@
     .link-item-meta, .file-item-meta {
       font-size: 14px;
       color: #6b7280;
-    }
-    .photo-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .photo-card {
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-    .photo-card img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      display: block;
-      background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
-    }
-    .photo-card .caption {
-      padding: 12px 14px;
-      font-size: 14px;
-      color: var(--muted);
     }
     footer {
       padding: 48px 0 72px;
@@ -260,7 +292,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: min(520px, 100%);
+      width: min(560px, 100%);
       height: 100vh;
       z-index: 1200;
       background: white;
@@ -281,10 +313,6 @@
     .admin-section h3 {
       margin: 0 0 12px;
       font-size: 18px;
-    }
-    .admin-section h4 {
-      margin: 0 0 10px;
-      font-size: 15px;
     }
     .admin-panel label {
       display: block;
@@ -320,25 +348,63 @@
       color: #6b7280;
     }
     .hidden { display: none !important; }
-    .admin-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.58);
+      z-index: 1400;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
     }
-    .admin-list-item {
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      width: min(860px, 100%);
+      max-height: 86vh;
+      overflow-y: auto;
+      border-radius: 28px;
+      background: white;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+      padding: 24px;
+    }
+    .modal-header {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
       align-items: flex-start;
-      background: white;
+      gap: 16px;
+      margin-bottom: 18px;
     }
-    .admin-list-item strong {
-      display: block;
-      margin-bottom: 4px;
+    .modal-title {
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin: 0 0 6px;
+    }
+    .modal-meta {
       font-size: 14px;
+      color: #6b7280;
+    }
+    .modal-body {
+      color: var(--text);
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
+    .modal-preview-img {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      margin-bottom: 14px;
+      object-fit: cover;
+      max-height: 70vh;
+      background: #eef2f7;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
     }
     .pill {
       display: inline-block;
@@ -354,11 +420,12 @@
       .grid-3, .photo-grid, .row { grid-template-columns: 1fr; }
       .nav { flex-direction: column; align-items: flex-start; }
       .link-item, .file-item { flex-direction: column; }
+      .modal { padding: 18px; }
     }
   </style>
 </head>
 <body>
-  <div id="adminBar" class="admin-bar">관리자 모드가 켜져 있습니다. 이 버전은 브라우저 저장 기반입니다. 다른 기기와 자동 동기화되지는 않습니다.</div>
+  <div id="adminBar" class="admin-bar">관리자 모드가 켜져 있습니다. 방문자는 항목을 읽고 보고, 관리자는 같은 항목을 눌러 수정할 수 있습니다. 이 버전은 브라우저 저장 기반입니다.</div>
 
   <header>
     <div class="wrap nav">
@@ -413,52 +480,23 @@
     <section id="papers" class="alt">
       <div class="wrap">
         <h2>논문</h2>
-        <p class="section-intro" data-edit="papersIntro">대표 논문과 진행 중인 작업을 정리하는 공간입니다.</p>
-        <div class="card">
-          <div class="list-item">
-            <div class="item-title" data-edit="paper1Title">논문 제목 1</div>
-            <div class="item-meta" data-edit="paper1Meta">저널명 또는 상태 · 연도</div>
-            <p data-edit="paper1Text">논문의 핵심 주장을 짧게 소개합니다.</p>
-          </div>
-          <div class="list-item">
-            <div class="item-title" data-edit="paper2Title">논문 제목 2</div>
-            <div class="item-meta" data-edit="paper2Meta">저널명 또는 상태 · 연도</div>
-            <p data-edit="paper2Text">이 자리에는 논문의 주제와 기여를 간단히 적습니다.</p>
-          </div>
-          <div class="list-item">
-            <div class="item-title" data-edit="paper3Title">논문 제목 3</div>
-            <div class="item-meta" data-edit="paper3Meta">투고 중 또는 준비 중 · 연도</div>
-            <p data-edit="paper3Text">PDF, 초록, DOI, 외부 링크를 연결할 수 있습니다.</p>
-          </div>
-        </div>
+        <p class="section-intro" data-edit="papersIntro">항목을 누르면 전체 내용을 읽을 수 있습니다. 관리자 모드에서는 같은 항목을 눌러 수정하거나 삭제할 수 있습니다.</p>
+        <div id="papersGrid" class="item-grid"></div>
       </div>
     </section>
 
     <section id="fiction">
       <div class="wrap">
         <h2>소설</h2>
-        <p class="section-intro" data-edit="fictionIntro">소설 작품과 시리즈를 정리하는 공간입니다.</p>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3 data-edit="fiction1Title">작품 제목 1</h3>
-            <p data-edit="fiction1Text">작품 소개를 적습니다.</p>
-          </div>
-          <div class="card">
-            <h3 data-edit="fiction2Title">작품 제목 2</h3>
-            <p data-edit="fiction2Text">시리즈 소개나 출간 예정 작품 소개에도 쓸 수 있습니다.</p>
-          </div>
-          <div class="card">
-            <h3 data-edit="fiction3Title">작품 제목 3</h3>
-            <p data-edit="fiction3Text">작품 링크나 구매 링크를 연결하기 좋은 카드입니다.</p>
-          </div>
-        </div>
+        <p class="section-intro" data-edit="fictionIntro">항목을 누르면 작품 소개나 본문 일부를 읽을 수 있습니다. 관리자 모드에서는 같은 항목을 눌러 수정하거나 삭제할 수 있습니다.</p>
+        <div id="fictionGrid" class="item-grid"></div>
       </div>
     </section>
 
     <section id="photos" class="alt">
       <div class="wrap">
         <h2>사진</h2>
-        <p class="section-intro" data-edit="photosIntro">관리자 모드에서 이미지를 추가하거나 삭제할 수 있습니다. 이 저장 방식은 브라우저 저장 기반이라 큰 파일에는 적합하지 않습니다.</p>
+        <p class="section-intro" data-edit="photosIntro">사진을 누르면 크게 볼 수 있습니다. 관리자 모드에서는 같은 사진을 눌러 설명을 바꾸거나 삭제할 수 있습니다.</p>
         <div id="photoGrid" class="photo-grid"></div>
       </div>
     </section>
@@ -466,7 +504,7 @@
     <section id="links">
       <div class="wrap">
         <h2>링크</h2>
-        <p class="section-intro" data-edit="linksIntro">논문 링크, 서점 링크, Google Scholar, ORCID, 인터뷰, 기사 등을 정리합니다.</p>
+        <p class="section-intro" data-edit="linksIntro">링크 항목을 누르면 설명을 보고 바로 이동할 수 있습니다. 관리자 모드에서는 수정하거나 삭제할 수 있습니다.</p>
         <div id="linksList" class="link-list"></div>
       </div>
     </section>
@@ -474,7 +512,7 @@
     <section id="files" class="alt">
       <div class="wrap">
         <h2>파일</h2>
-        <p class="section-intro" data-edit="filesIntro">작은 파일은 관리자 모드에서 추가할 수 있습니다. 큰 PDF나 원본 사진은 이 방식으로 올리기 어렵습니다.</p>
+        <p class="section-intro" data-edit="filesIntro">파일 항목을 누르면 상세 정보와 다운로드 버튼이 열립니다. 관리자 모드에서는 업로드, 수정, 삭제가 가능합니다.</p>
         <div id="filesList" class="file-list"></div>
       </div>
     </section>
@@ -511,24 +549,77 @@
       <div class="admin-actions">
         <button class="btn btn-dark" id="loginBtn">들어가기</button>
       </div>
-      <div class="small-note">이 버전의 비밀번호 검사는 브라우저 안에서 동작합니다. 즉, 진짜 보안 관리자 시스템은 아닙니다.</div>
+      <div class="small-note">이 버전의 비밀번호 검사는 브라우저 안에서 동작합니다. 진짜 서버 보안 관리자는 아닙니다.</div>
     </div>
 
     <div id="editorBox" class="hidden">
       <div class="admin-section">
-        <h3>문구 수정</h3>
+        <h3>공통 문구 수정</h3>
         <label for="fieldSelect">수정할 항목</label>
         <select id="fieldSelect"></select>
         <label for="fieldValue">내용</label>
         <textarea id="fieldValue"></textarea>
         <div class="admin-actions">
-          <button class="btn btn-dark" id="applyBtn">적용</button>
+          <button class="btn btn-dark" id="applyTextBtn">적용</button>
           <button class="btn btn-light" id="saveTextBtn">문구 저장</button>
         </div>
       </div>
 
       <div class="admin-section">
-        <h3>링크 관리</h3>
+        <h3>논문 추가</h3>
+        <div class="row">
+          <div>
+            <label for="paperTitleInput">제목</label>
+            <input id="paperTitleInput" type="text" placeholder="논문 제목" />
+          </div>
+          <div>
+            <label for="paperMetaInput">메타</label>
+            <input id="paperMetaInput" type="text" placeholder="저널명 · 연도" />
+          </div>
+        </div>
+        <label for="paperDescInput">짧은 설명</label>
+        <textarea id="paperDescInput" placeholder="목록에 보일 짧은 소개"></textarea>
+        <label for="paperBodyInput">본문</label>
+        <textarea id="paperBodyInput" placeholder="눌렀을 때 열릴 본문"></textarea>
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="addPaperBtn">논문 추가</button>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <h3>소설 추가</h3>
+        <div class="row">
+          <div>
+            <label for="fictionTitleInput">제목</label>
+            <input id="fictionTitleInput" type="text" placeholder="작품 제목" />
+          </div>
+          <div>
+            <label for="fictionMetaInput">메타</label>
+            <input id="fictionMetaInput" type="text" placeholder="장편 · 단편 · 연도" />
+          </div>
+        </div>
+        <label for="fictionDescInput">짧은 설명</label>
+        <textarea id="fictionDescInput" placeholder="목록에 보일 짧은 소개"></textarea>
+        <label for="fictionBodyInput">본문</label>
+        <textarea id="fictionBodyInput" placeholder="눌렀을 때 열릴 내용"></textarea>
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="addFictionBtn">소설 추가</button>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <h3>사진 추가</h3>
+        <label for="photoFileInput">이미지 선택</label>
+        <input id="photoFileInput" type="file" accept="image/*" />
+        <label for="photoCaption">설명</label>
+        <input id="photoCaption" type="text" placeholder="사진 설명" />
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="addPhotoBtn">사진 추가</button>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <h3>링크 추가</h3>
         <div class="row">
           <div>
             <label for="linkTitle">제목</label>
@@ -536,7 +627,7 @@
           </div>
           <div>
             <label for="linkCategory">분류</label>
-            <input id="linkCategory" type="text" placeholder="예: 연구, 소설, 인터뷰" />
+            <input id="linkCategory" type="text" placeholder="예: 연구" />
           </div>
         </div>
         <label for="linkUrl">주소</label>
@@ -546,33 +637,20 @@
         <div class="admin-actions">
           <button class="btn btn-dark" id="addLinkBtn">링크 추가</button>
         </div>
-        <div id="adminLinksList" class="admin-list"></div>
       </div>
 
       <div class="admin-section">
-        <h3>사진 관리</h3>
-        <label for="photoFileInput">이미지 선택</label>
-        <input id="photoFileInput" type="file" accept="image/*" />
-        <label for="photoCaption">설명</label>
-        <input id="photoCaption" type="text" placeholder="사진 설명" />
-        <div class="admin-actions">
-          <button class="btn btn-dark" id="addPhotoBtn">사진 추가</button>
-        </div>
-        <div class="small-note">브라우저 저장 한계 때문에 사진은 적은 수의 작은 파일만 권합니다.</div>
-        <div id="adminPhotosList" class="admin-list"></div>
-      </div>
-
-      <div class="admin-section">
-        <h3>파일 관리</h3>
+        <h3>파일 추가</h3>
         <label for="docFileInput">파일 선택</label>
         <input id="docFileInput" type="file" accept=".pdf,.doc,.docx,.txt,.md,.jpg,.jpeg,.png,.webp" />
         <label for="docTitle">표시 제목</label>
         <input id="docTitle" type="text" placeholder="예: CV PDF" />
+        <label for="docDesc">설명</label>
+        <textarea id="docDesc" placeholder="파일 설명"></textarea>
         <div class="admin-actions">
           <button class="btn btn-dark" id="addFileBtn">파일 추가</button>
         </div>
-        <div class="small-note">이 방식은 큰 PDF나 많은 파일에 적합하지 않습니다. Vercel 정적 사이트에 진짜 파일 저장소가 생기는 것은 아닙니다.</div>
-        <div id="adminFilesList" class="admin-list"></div>
+        <div class="small-note">이 버전은 브라우저 저장 기반입니다. 큰 파일이나 많은 파일에는 적합하지 않습니다.</div>
       </div>
 
       <div class="admin-section">
@@ -582,14 +660,27 @@
           <button class="btn btn-danger" id="resetBtn">전체 초기화</button>
           <button class="btn btn-light" id="logoutBtn">종료</button>
         </div>
-        <div class="small-note">이 버전은 localStorage에 저장됩니다. 공개 사이트 전체를 영구적으로 바꾸는 방식은 아닙니다.</div>
       </div>
     </div>
   </aside>
 
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3 id="modalTitle" class="modal-title"></h3>
+          <div id="modalMeta" class="modal-meta"></div>
+        </div>
+        <button id="closeModalBtn" class="btn btn-light btn-small">닫기</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+      <div id="modalActions" class="modal-actions"></div>
+    </div>
+  </div>
+
   <script>
     const ADMIN_PASSWORD = "gibran0830!";
-    const STORAGE_KEY = "choiyongho_homepage_data_v2";
+    const STORAGE_KEY = "choiyongho_homepage_data_v3";
 
     const fieldLabels = {
       brand: "상단 이름",
@@ -604,22 +695,7 @@
       aboutCard3Title: "소개 카드 3 제목",
       aboutCard3Text: "소개 카드 3 내용",
       papersIntro: "논문 섹션 소개",
-      paper1Title: "논문 1 제목",
-      paper1Meta: "논문 1 메타",
-      paper1Text: "논문 1 설명",
-      paper2Title: "논문 2 제목",
-      paper2Meta: "논문 2 메타",
-      paper2Text: "논문 2 설명",
-      paper3Title: "논문 3 제목",
-      paper3Meta: "논문 3 메타",
-      paper3Text: "논문 3 설명",
       fictionIntro: "소설 섹션 소개",
-      fiction1Title: "소설 1 제목",
-      fiction1Text: "소설 1 설명",
-      fiction2Title: "소설 2 제목",
-      fiction2Text: "소설 2 설명",
-      fiction3Title: "소설 3 제목",
-      fiction3Text: "소설 3 설명",
       photosIntro: "사진 섹션 소개",
       linksIntro: "링크 섹션 소개",
       filesIntro: "파일 섹션 소개",
@@ -638,131 +714,72 @@
       return obj;
     }
 
+    function defaultPlaceholderSvg(label) {
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'><rect width='800' height='600' fill='#eef2f7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#94a3b8' font-size='28'>${label}</text></svg>`)}`;
+    }
+
     const defaultState = {
       text: collectDefaultText(),
+      papers: [
+        {
+          id: crypto.randomUUID(),
+          title: '논문 제목 1',
+          meta: '저널명 또는 상태 · 연도',
+          desc: '논문의 핵심 주장을 짧게 소개합니다.',
+          body: '여기에 전체 초록, 핵심 논지, 관련 링크 안내 등을 넣을 수 있습니다.'
+        },
+        {
+          id: crypto.randomUUID(),
+          title: '논문 제목 2',
+          meta: '저널명 또는 상태 · 연도',
+          desc: '이 자리에는 논문의 주제와 기여를 간단히 적습니다.',
+          body: '항목을 클릭했을 때 보일 자세한 설명입니다.'
+        }
+      ],
+      fiction: [
+        {
+          id: crypto.randomUUID(),
+          title: '작품 제목 1',
+          meta: '장편 또는 단편 · 연도',
+          desc: '작품 소개를 짧게 적습니다.',
+          body: '여기에 작품 소개, 일부 발췌, 독자 안내 등을 넣을 수 있습니다.'
+        }
+      ],
+      photos: [],
       links: [
         { id: crypto.randomUUID(), title: 'Google Scholar', category: '연구', url: 'https://scholar.google.com', desc: '학술 논문 목록과 인용 정보' },
         { id: crypto.randomUUID(), title: 'ORCID', category: '연구', url: 'https://orcid.org', desc: '연구자 식별 정보' }
       ],
-      photos: [],
       files: []
     };
 
+    function clone(obj) {
+      return JSON.parse(JSON.stringify(obj));
+    }
+
     function loadState() {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return structuredClone(defaultState);
+      if (!raw) return clone(defaultState);
       try {
         const parsed = JSON.parse(raw);
         return {
           text: { ...defaultState.text, ...(parsed.text || {}) },
-          links: Array.isArray(parsed.links) ? parsed.links : structuredClone(defaultState.links),
+          papers: Array.isArray(parsed.papers) ? parsed.papers : clone(defaultState.papers),
+          fiction: Array.isArray(parsed.fiction) ? parsed.fiction : clone(defaultState.fiction),
           photos: Array.isArray(parsed.photos) ? parsed.photos : [],
+          links: Array.isArray(parsed.links) ? parsed.links : clone(defaultState.links),
           files: Array.isArray(parsed.files) ? parsed.files : []
         };
       } catch {
-        return structuredClone(defaultState);
+        return clone(defaultState);
       }
     }
 
     let state = loadState();
+    let isAdmin = false;
 
     function saveState() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-
-    function applyText() {
-      Object.entries(state.text).forEach(([key, value]) => {
-        const el = document.querySelector(`[data-edit="${key}"]`);
-        if (el) el.innerHTML = value;
-      });
-    }
-
-    function renderLinks() {
-      const list = document.getElementById('linksList');
-      const adminList = document.getElementById('adminLinksList');
-      if (!state.links.length) {
-        list.innerHTML = '<div class="card"><p>아직 추가된 링크가 없습니다.</p></div>';
-        adminList.innerHTML = '<div class="small-note">등록된 링크가 없습니다.</div>';
-        return;
-      }
-      list.innerHTML = state.links.map(item => `
-        <div class="link-item">
-          <div>
-            <div class="link-item-title"><a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></div>
-            <div class="link-item-meta">${escapeHtml(item.category || '링크')}</div>
-            <div style="margin-top:6px; color:var(--muted); font-size:15px;">${escapeHtml(item.desc || '')}</div>
-          </div>
-          <div><a class="btn btn-light" href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer">열기</a></div>
-        </div>`).join('');
-      adminList.innerHTML = state.links.map(item => `
-        <div class="admin-list-item">
-          <div>
-            <strong>${escapeHtml(item.title)}</strong>
-            <div class="small-note">${escapeHtml(item.category || '')}</div>
-            <div class="small-note">${escapeHtml(item.url)}</div>
-          </div>
-          <button class="btn btn-danger" onclick="deleteLink('${item.id}')">삭제</button>
-        </div>`).join('');
-    }
-
-    function renderPhotos() {
-      const grid = document.getElementById('photoGrid');
-      const adminList = document.getElementById('adminPhotosList');
-      if (!state.photos.length) {
-        grid.innerHTML = Array.from({ length: 6 }).map((_, i) => `
-          <div class="photo-card">
-            <img alt="빈 사진 자리" src="data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'><rect width='800' height='600' fill='#eef2f7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#94a3b8' font-size='28'>사진 ${i+1}</text></svg>`) }">
-            <div class="caption">사진을 추가해 주세요</div>
-          </div>`).join('');
-        adminList.innerHTML = '<div class="small-note">등록된 사진이 없습니다.</div>';
-        return;
-      }
-      grid.innerHTML = state.photos.map(item => `
-        <div class="photo-card">
-          <img src="${item.dataUrl}" alt="${escapeAttr(item.caption || '사진')}" />
-          <div class="caption">${escapeHtml(item.caption || '')}</div>
-        </div>`).join('');
-      adminList.innerHTML = state.photos.map(item => `
-        <div class="admin-list-item">
-          <div>
-            <strong>${escapeHtml(item.caption || '설명 없음')}</strong>
-            <div class="small-note">이미지</div>
-          </div>
-          <button class="btn btn-danger" onclick="deletePhoto('${item.id}')">삭제</button>
-        </div>`).join('');
-    }
-
-    function renderFiles() {
-      const list = document.getElementById('filesList');
-      const adminList = document.getElementById('adminFilesList');
-      if (!state.files.length) {
-        list.innerHTML = '<div class="card"><p>아직 추가된 파일이 없습니다.</p></div>';
-        adminList.innerHTML = '<div class="small-note">등록된 파일이 없습니다.</div>';
-        return;
-      }
-      list.innerHTML = state.files.map(item => `
-        <div class="file-item">
-          <div>
-            <div class="file-item-title"><a href="${item.dataUrl}" download="${escapeAttr(item.fileName)}">${escapeHtml(item.title)}</a></div>
-            <div class="file-item-meta">${escapeHtml(item.fileName)} · ${formatBytes(item.size)}</div>
-          </div>
-          <div><a class="btn btn-light" href="${item.dataUrl}" download="${escapeAttr(item.fileName)}">다운로드</a></div>
-        </div>`).join('');
-      adminList.innerHTML = state.files.map(item => `
-        <div class="admin-list-item">
-          <div>
-            <strong>${escapeHtml(item.title)}</strong>
-            <div class="small-note">${escapeHtml(item.fileName)} · ${formatBytes(item.size)}</div>
-          </div>
-          <button class="btn btn-danger" onclick="deleteFile('${item.id}')">삭제</button>
-        </div>`).join('');
-    }
-
-    function renderAll() {
-      applyText();
-      renderLinks();
-      renderPhotos();
-      renderFiles();
     }
 
     function escapeHtml(value) {
@@ -793,23 +810,293 @@
       });
     }
 
-    window.deleteLink = function(id) {
-      state.links = state.links.filter(item => item.id !== id);
-      saveState();
-      renderLinks();
-    };
+    function applyText() {
+      Object.entries(state.text).forEach(([key, value]) => {
+        const el = document.querySelector(`[data-edit="${key}"]`);
+        if (el) el.innerHTML = value;
+      });
+    }
 
-    window.deletePhoto = function(id) {
-      state.photos = state.photos.filter(item => item.id !== id);
-      saveState();
+    function renderPapers() {
+      const grid = document.getElementById('papersGrid');
+      if (!state.papers.length) {
+        grid.innerHTML = '<div class="card"><p>아직 등록된 논문이 없습니다.</p></div>';
+        return;
+      }
+      grid.innerHTML = state.papers.map(item => `
+        <div class="item-card" onclick="openItem('paper','${item.id}')">
+          <div class="item-title">${escapeHtml(item.title)}</div>
+          <div class="item-meta">${escapeHtml(item.meta || '')}</div>
+          <div class="item-desc">${escapeHtml(item.desc || '')}</div>
+          <div class="item-hint">${isAdmin ? '눌러서 보기 또는 수정' : '눌러서 읽기'}</div>
+        </div>`).join('');
+    }
+
+    function renderFiction() {
+      const grid = document.getElementById('fictionGrid');
+      if (!state.fiction.length) {
+        grid.innerHTML = '<div class="card"><p>아직 등록된 소설 항목이 없습니다.</p></div>';
+        return;
+      }
+      grid.innerHTML = state.fiction.map(item => `
+        <div class="item-card" onclick="openItem('fiction','${item.id}')">
+          <div class="item-title">${escapeHtml(item.title)}</div>
+          <div class="item-meta">${escapeHtml(item.meta || '')}</div>
+          <div class="item-desc">${escapeHtml(item.desc || '')}</div>
+          <div class="item-hint">${isAdmin ? '눌러서 보기 또는 수정' : '눌러서 읽기'}</div>
+        </div>`).join('');
+    }
+
+    function renderPhotos() {
+      const grid = document.getElementById('photoGrid');
+      if (!state.photos.length) {
+        grid.innerHTML = Array.from({ length: 6 }).map((_, i) => `
+          <div class="photo-card">
+            <img alt="빈 사진 자리" src="${defaultPlaceholderSvg(`사진 ${i + 1}`)}">
+            <div class="photo-caption">사진을 추가해 주세요</div>
+          </div>`).join('');
+        return;
+      }
+      grid.innerHTML = state.photos.map(item => `
+        <div class="photo-card" onclick="openItem('photo','${item.id}')">
+          <img src="${item.dataUrl}" alt="${escapeAttr(item.caption || '사진')}" />
+          <div class="photo-caption">${escapeHtml(item.caption || '')}</div>
+        </div>`).join('');
+    }
+
+    function renderLinks() {
+      const list = document.getElementById('linksList');
+      if (!state.links.length) {
+        list.innerHTML = '<div class="card"><p>아직 추가된 링크가 없습니다.</p></div>';
+        return;
+      }
+      list.innerHTML = state.links.map(item => `
+        <div class="link-item" onclick="openItem('link','${item.id}')">
+          <div>
+            <div class="link-item-title">${escapeHtml(item.title)}</div>
+            <div class="link-item-meta">${escapeHtml(item.category || '링크')}</div>
+            <div style="margin-top:6px; color:var(--muted); font-size:15px;">${escapeHtml(item.desc || '')}</div>
+          </div>
+          <div><span class="pill">${isAdmin ? '보기/수정' : '열기'}</span></div>
+        </div>`).join('');
+    }
+
+    function renderFiles() {
+      const list = document.getElementById('filesList');
+      if (!state.files.length) {
+        list.innerHTML = '<div class="card"><p>아직 추가된 파일이 없습니다.</p></div>';
+        return;
+      }
+      list.innerHTML = state.files.map(item => `
+        <div class="file-item" onclick="openItem('file','${item.id}')">
+          <div>
+            <div class="file-item-title">${escapeHtml(item.title)}</div>
+            <div class="file-item-meta">${escapeHtml(item.fileName)} · ${formatBytes(item.size)}</div>
+            <div style="margin-top:6px; color:var(--muted); font-size:15px;">${escapeHtml(item.desc || '')}</div>
+          </div>
+          <div><span class="pill">${isAdmin ? '보기/수정' : '열기'}</span></div>
+        </div>`).join('');
+    }
+
+    function renderAll() {
+      applyText();
+      renderPapers();
+      renderFiction();
       renderPhotos();
-    };
-
-    window.deleteFile = function(id) {
-      state.files = state.files.filter(item => item.id !== id);
-      saveState();
+      renderLinks();
       renderFiles();
-    };
+    }
+
+    function getCollection(type) {
+      if (type === 'paper') return state.papers;
+      if (type === 'fiction') return state.fiction;
+      if (type === 'photo') return state.photos;
+      if (type === 'link') return state.links;
+      if (type === 'file') return state.files;
+      return [];
+    }
+
+    function findItem(type, id) {
+      return getCollection(type).find(item => item.id === id);
+    }
+
+    function updateItem(type, id, patch) {
+      const list = getCollection(type);
+      const index = list.findIndex(item => item.id === id);
+      if (index === -1) return;
+      list[index] = { ...list[index], ...patch };
+      saveState();
+      renderAll();
+    }
+
+    function deleteItem(type, id) {
+      if (!confirm('이 항목을 삭제하시겠습니까?')) return;
+      if (type === 'paper') state.papers = state.papers.filter(item => item.id !== id);
+      if (type === 'fiction') state.fiction = state.fiction.filter(item => item.id !== id);
+      if (type === 'photo') state.photos = state.photos.filter(item => item.id !== id);
+      if (type === 'link') state.links = state.links.filter(item => item.id !== id);
+      if (type === 'file') state.files = state.files.filter(item => item.id !== id);
+      saveState();
+      renderAll();
+      closeModal();
+    }
+
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalBody = document.getElementById('modalBody');
+    const modalActions = document.getElementById('modalActions');
+
+    function openModal() {
+      modalBackdrop.classList.add('open');
+    }
+    function closeModal() {
+      modalBackdrop.classList.remove('open');
+    }
+
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    function makeTextEditor(type, item) {
+      return `
+        <label>제목</label>
+        <input id="modalEditTitle" value="${escapeAttr(item.title || '')}">
+        <label>메타</label>
+        <input id="modalEditMeta" value="${escapeAttr(item.meta || '')}">
+        <label>짧은 설명</label>
+        <textarea id="modalEditDesc">${escapeHtml(item.desc || '')}</textarea>
+        <label>본문</label>
+        <textarea id="modalEditBody" style="min-height:180px;">${escapeHtml(item.body || '')}</textarea>
+      `;
+    }
+
+    function openItem(type, id) {
+      const item = findItem(type, id);
+      if (!item) return;
+
+      modalActions.innerHTML = '';
+
+      if (type === 'paper' || type === 'fiction') {
+        modalTitle.textContent = item.title;
+        modalMeta.textContent = item.meta || '';
+        if (isAdmin) {
+          modalBody.innerHTML = makeTextEditor(type, item);
+          modalActions.innerHTML = `
+            <button class="btn btn-dark" id="modalSaveBtn">저장</button>
+            <button class="btn btn-danger" id="modalDeleteBtn">삭제</button>
+          `;
+          document.getElementById('modalSaveBtn').onclick = () => {
+            updateItem(type, id, {
+              title: document.getElementById('modalEditTitle').value.trim(),
+              meta: document.getElementById('modalEditMeta').value.trim(),
+              desc: document.getElementById('modalEditDesc').value.trim(),
+              body: document.getElementById('modalEditBody').value.trim()
+            });
+            closeModal();
+          };
+          document.getElementById('modalDeleteBtn').onclick = () => deleteItem(type, id);
+        } else {
+          modalBody.textContent = item.body || item.desc || '';
+        }
+      }
+
+      if (type === 'photo') {
+        modalTitle.textContent = item.caption || '사진';
+        modalMeta.textContent = '사진';
+        if (isAdmin) {
+          modalBody.innerHTML = `
+            <img class="modal-preview-img" src="${item.dataUrl}" alt="${escapeAttr(item.caption || '사진')}">
+            <label>설명</label>
+            <input id="modalPhotoCaption" value="${escapeAttr(item.caption || '')}">
+          `;
+          modalActions.innerHTML = `
+            <button class="btn btn-dark" id="modalPhotoSaveBtn">저장</button>
+            <button class="btn btn-danger" id="modalPhotoDeleteBtn">삭제</button>
+          `;
+          document.getElementById('modalPhotoSaveBtn').onclick = () => {
+            updateItem('photo', id, { caption: document.getElementById('modalPhotoCaption').value.trim() });
+            closeModal();
+          };
+          document.getElementById('modalPhotoDeleteBtn').onclick = () => deleteItem('photo', id);
+        } else {
+          modalBody.innerHTML = `
+            <img class="modal-preview-img" src="${item.dataUrl}" alt="${escapeAttr(item.caption || '사진')}">
+            <div>${escapeHtml(item.caption || '')}</div>
+          `;
+        }
+      }
+
+      if (type === 'link') {
+        modalTitle.textContent = item.title;
+        modalMeta.textContent = item.category || '링크';
+        if (isAdmin) {
+          modalBody.innerHTML = `
+            <label>제목</label>
+            <input id="modalLinkTitle" value="${escapeAttr(item.title || '')}">
+            <label>분류</label>
+            <input id="modalLinkCategory" value="${escapeAttr(item.category || '')}">
+            <label>주소</label>
+            <input id="modalLinkUrl" value="${escapeAttr(item.url || '')}">
+            <label>설명</label>
+            <textarea id="modalLinkDesc">${escapeHtml(item.desc || '')}</textarea>
+          `;
+          modalActions.innerHTML = `
+            <button class="btn btn-dark" id="modalLinkSaveBtn">저장</button>
+            <button class="btn btn-light" id="modalLinkOpenBtn">열기</button>
+            <button class="btn btn-danger" id="modalLinkDeleteBtn">삭제</button>
+          `;
+          document.getElementById('modalLinkSaveBtn').onclick = () => {
+            updateItem('link', id, {
+              title: document.getElementById('modalLinkTitle').value.trim(),
+              category: document.getElementById('modalLinkCategory').value.trim(),
+              url: document.getElementById('modalLinkUrl').value.trim(),
+              desc: document.getElementById('modalLinkDesc').value.trim()
+            });
+            closeModal();
+          };
+          document.getElementById('modalLinkOpenBtn').onclick = () => window.open(item.url, '_blank', 'noopener');
+          document.getElementById('modalLinkDeleteBtn').onclick = () => deleteItem('link', id);
+        } else {
+          modalBody.innerHTML = `<div style="margin-bottom:14px;">${escapeHtml(item.desc || '')}</div>`;
+          modalActions.innerHTML = `<a class="btn btn-dark" href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer">바로가기</a>`;
+        }
+      }
+
+      if (type === 'file') {
+        modalTitle.textContent = item.title;
+        modalMeta.textContent = `${item.fileName} · ${formatBytes(item.size)}`;
+        if (isAdmin) {
+          modalBody.innerHTML = `
+            <label>제목</label>
+            <input id="modalFileTitle" value="${escapeAttr(item.title || '')}">
+            <label>설명</label>
+            <textarea id="modalFileDesc">${escapeHtml(item.desc || '')}</textarea>
+          `;
+          modalActions.innerHTML = `
+            <a class="btn btn-light" href="${item.dataUrl}" download="${escapeAttr(item.fileName)}">다운로드</a>
+            <button class="btn btn-dark" id="modalFileSaveBtn">저장</button>
+            <button class="btn btn-danger" id="modalFileDeleteBtn">삭제</button>
+          `;
+          document.getElementById('modalFileSaveBtn').onclick = () => {
+            updateItem('file', id, {
+              title: document.getElementById('modalFileTitle').value.trim(),
+              desc: document.getElementById('modalFileDesc').value.trim()
+            });
+            closeModal();
+          };
+          document.getElementById('modalFileDeleteBtn').onclick = () => deleteItem('file', id);
+        } else {
+          modalBody.innerHTML = `<div style="margin-bottom:14px;">${escapeHtml(item.desc || '')}</div>`;
+          modalActions.innerHTML = `<a class="btn btn-dark" href="${item.dataUrl}" download="${escapeAttr(item.fileName)}">다운로드</a>`;
+        }
+      }
+
+      openModal();
+    }
+
+    window.openItem = openItem;
 
     const adminToggle = document.getElementById('adminToggle');
     const adminPanel = document.getElementById('adminPanel');
@@ -834,25 +1121,28 @@
     function syncFieldValue() {
       const key = fieldSelect.value;
       const value = state.text[key] || '';
-      fieldValue.value = value.replace(/<br\s*\/?/gi, '\n').replace(/>/g, match => match === '>' ? '>' : match);
-      fieldValue.value = fieldValue.value.replace(/<br\s*\/?>/gi, '\n');
+      fieldValue.value = value.replace(/<br\s*\/?>/gi, '\n');
     }
 
     function openPanel() { adminPanel.classList.add('open'); }
     function closePanel() { adminPanel.classList.remove('open'); }
 
     function enterAdmin() {
+      isAdmin = true;
       loginBox.classList.add('hidden');
       editorBox.classList.remove('hidden');
       adminBar.classList.add('show');
+      renderAll();
       syncFieldValue();
     }
 
     function exitAdmin() {
+      isAdmin = false;
       loginBox.classList.remove('hidden');
       editorBox.classList.add('hidden');
       adminBar.classList.remove('show');
       document.getElementById('adminPassword').value = '';
+      renderAll();
       closePanel();
     }
 
@@ -866,12 +1156,11 @@
     });
 
     fieldSelect.addEventListener('change', syncFieldValue);
-    document.getElementById('applyBtn').addEventListener('click', () => {
+    document.getElementById('applyTextBtn').addEventListener('click', () => {
       const key = fieldSelect.value;
       state.text[key] = fieldValue.value.replace(/\n/g, '<br>');
       applyText();
     });
-
     document.getElementById('saveTextBtn').addEventListener('click', () => {
       const key = fieldSelect.value;
       state.text[key] = fieldValue.value.replace(/\n/g, '<br>');
@@ -880,36 +1169,36 @@
       alert('문구를 저장했습니다.');
     });
 
-    document.getElementById('addLinkBtn').addEventListener('click', () => {
-      const title = document.getElementById('linkTitle').value.trim();
-      const category = document.getElementById('linkCategory').value.trim();
-      const url = document.getElementById('linkUrl').value.trim();
-      const desc = document.getElementById('linkDesc').value.trim();
-      if (!title || !url) {
-        alert('링크 제목과 주소를 입력하세요.');
-        return;
-      }
-      state.links.unshift({ id: crypto.randomUUID(), title, category, url, desc });
+    document.getElementById('addPaperBtn').addEventListener('click', () => {
+      const title = document.getElementById('paperTitleInput').value.trim();
+      const meta = document.getElementById('paperMetaInput').value.trim();
+      const desc = document.getElementById('paperDescInput').value.trim();
+      const body = document.getElementById('paperBodyInput').value.trim();
+      if (!title) return alert('논문 제목을 입력하세요.');
+      state.papers.unshift({ id: crypto.randomUUID(), title, meta, desc, body });
       saveState();
-      renderLinks();
-      document.getElementById('linkTitle').value = '';
-      document.getElementById('linkCategory').value = '';
-      document.getElementById('linkUrl').value = '';
-      document.getElementById('linkDesc').value = '';
+      renderPapers();
+      ['paperTitleInput','paperMetaInput','paperDescInput','paperBodyInput'].forEach(id => document.getElementById(id).value = '');
+    });
+
+    document.getElementById('addFictionBtn').addEventListener('click', () => {
+      const title = document.getElementById('fictionTitleInput').value.trim();
+      const meta = document.getElementById('fictionMetaInput').value.trim();
+      const desc = document.getElementById('fictionDescInput').value.trim();
+      const body = document.getElementById('fictionBodyInput').value.trim();
+      if (!title) return alert('소설 제목을 입력하세요.');
+      state.fiction.unshift({ id: crypto.randomUUID(), title, meta, desc, body });
+      saveState();
+      renderFiction();
+      ['fictionTitleInput','fictionMetaInput','fictionDescInput','fictionBodyInput'].forEach(id => document.getElementById(id).value = '');
     });
 
     document.getElementById('addPhotoBtn').addEventListener('click', async () => {
       const fileInput = document.getElementById('photoFileInput');
       const caption = document.getElementById('photoCaption').value.trim();
       const file = fileInput.files[0];
-      if (!file) {
-        alert('사진 파일을 선택하세요.');
-        return;
-      }
-      if (file.size > 1.5 * 1024 * 1024) {
-        alert('이 버전에서는 사진 한 장을 1.5MB 이하로 권합니다.');
-        return;
-      }
+      if (!file) return alert('사진 파일을 선택하세요.');
+      if (file.size > 1.5 * 1024 * 1024) return alert('이 버전에서는 사진 한 장을 1.5MB 이하로 권합니다.');
       const dataUrl = await readAsDataURL(file);
       state.photos.unshift({ id: crypto.randomUUID(), caption, dataUrl });
       saveState();
@@ -918,30 +1207,32 @@
       document.getElementById('photoCaption').value = '';
     });
 
+    document.getElementById('addLinkBtn').addEventListener('click', () => {
+      const title = document.getElementById('linkTitle').value.trim();
+      const category = document.getElementById('linkCategory').value.trim();
+      const url = document.getElementById('linkUrl').value.trim();
+      const desc = document.getElementById('linkDesc').value.trim();
+      if (!title || !url) return alert('링크 제목과 주소를 입력하세요.');
+      state.links.unshift({ id: crypto.randomUUID(), title, category, url, desc });
+      saveState();
+      renderLinks();
+      ['linkTitle','linkCategory','linkUrl','linkDesc'].forEach(id => document.getElementById(id).value = '');
+    });
+
     document.getElementById('addFileBtn').addEventListener('click', async () => {
       const fileInput = document.getElementById('docFileInput');
       const file = fileInput.files[0];
       const title = document.getElementById('docTitle').value.trim();
-      if (!file) {
-        alert('파일을 선택하세요.');
-        return;
-      }
-      if (file.size > 1.5 * 1024 * 1024) {
-        alert('이 버전에서는 파일 한 개를 1.5MB 이하로 권합니다.');
-        return;
-      }
+      const desc = document.getElementById('docDesc').value.trim();
+      if (!file) return alert('파일을 선택하세요.');
+      if (file.size > 1.5 * 1024 * 1024) return alert('이 버전에서는 파일 한 개를 1.5MB 이하로 권합니다.');
       const dataUrl = await readAsDataURL(file);
-      state.files.unshift({
-        id: crypto.randomUUID(),
-        title: title || file.name,
-        fileName: file.name,
-        size: file.size,
-        dataUrl
-      });
+      state.files.unshift({ id: crypto.randomUUID(), title: title || file.name, desc, fileName: file.name, size: file.size, dataUrl });
       saveState();
       renderFiles();
       fileInput.value = '';
       document.getElementById('docTitle').value = '';
+      document.getElementById('docDesc').value = '';
     });
 
     document.getElementById('exportBtn').addEventListener('click', () => {
@@ -955,11 +1246,12 @@
     });
 
     document.getElementById('resetBtn').addEventListener('click', () => {
-      if (!confirm('문구, 링크, 사진, 파일을 모두 초기화합니다.')) return;
-      state = structuredClone(defaultState);
+      if (!confirm('문구, 논문, 소설, 사진, 링크, 파일을 모두 초기화합니다.')) return;
+      state = clone(defaultState);
       saveState();
       renderAll();
       syncFieldValue();
+      closeModal();
     });
 
     document.getElementById('logoutBtn').addEventListener('click', exitAdmin);
