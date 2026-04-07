@@ -7,32 +7,45 @@
   <meta name="description" content="철학, 글쓰기, 이미지 기록. 최용호의 논문, 소설, 사진 아카이브." />
   <style>
     * { box-sizing: border-box; }
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #e5e7eb;
+      --accent: #111827;
+      --warn: #fff7ed;
+      --warn-line: #fed7aa;
+      --danger: #7f1d1d;
+    }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
-      color: #111827;
-      background: #f8fafc;
+      color: var(--text);
+      background: var(--bg);
       line-height: 1.7;
     }
     a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
     .wrap {
-      max-width: 1040px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
     }
     header {
       position: sticky;
       top: 0;
+      z-index: 20;
       background: rgba(248, 250, 252, 0.92);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e7eb;
-      z-index: 10;
+      border-bottom: 1px solid var(--line);
     }
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 18px 0;
+      gap: 18px;
     }
     .brand {
       font-size: 18px;
@@ -42,21 +55,23 @@
     .menu {
       display: flex;
       gap: 18px;
-      font-size: 15px;
-      color: #4b5563;
       flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 15px;
     }
     .hero {
-      padding: 96px 0 72px;
+      padding: 88px 0 68px;
+      border-top: none;
+      background: var(--bg);
     }
     .eyebrow {
       display: inline-block;
       padding: 7px 12px;
       border: 1px solid #d1d5db;
       border-radius: 999px;
-      font-size: 13px;
-      color: #4b5563;
       background: white;
+      color: var(--muted);
+      font-size: 13px;
     }
     h1 {
       margin: 20px 0 18px;
@@ -67,7 +82,7 @@
     .hero p {
       max-width: 760px;
       font-size: 19px;
-      color: #4b5563;
+      color: var(--muted);
     }
     .hero-actions {
       margin-top: 28px;
@@ -76,30 +91,37 @@
       flex-wrap: wrap;
     }
     .btn {
-      padding: 14px 20px;
+      border: 1px solid transparent;
       border-radius: 16px;
-      font-size: 15px;
-      font-weight: 600;
-      display: inline-block;
-      border: none;
+      padding: 13px 18px;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
     }
     .btn-dark {
-      background: #111827;
+      background: var(--accent);
       color: white;
     }
     .btn-light {
-      border: 1px solid #d1d5db;
       background: white;
-      color: #111827;
+      border-color: #d1d5db;
+      color: var(--text);
+    }
+    .btn-danger {
+      background: white;
+      border-color: #fecaca;
+      color: var(--danger);
     }
     section {
       padding: 72px 0;
-      border-top: 1px solid #e5e7eb;
-      background: #fff;
+      border-top: 1px solid var(--line);
+      background: white;
     }
     section.alt {
-      background: #f8fafc;
+      background: var(--bg);
     }
     h2 {
       margin: 0 0 18px;
@@ -109,7 +131,7 @@
     }
     .section-intro {
       max-width: 760px;
-      color: #4b5563;
+      color: var(--muted);
       margin-bottom: 32px;
       font-size: 17px;
     }
@@ -121,8 +143,8 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .card {
-      background: white;
-      border: 1px solid #e5e7eb;
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 24px;
       padding: 24px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
@@ -134,12 +156,12 @@
     }
     .card p {
       margin: 0;
-      color: #4b5563;
+      color: var(--muted);
       font-size: 15px;
     }
     .list-item {
       padding: 18px 0;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--line);
     }
     .list-item:first-child {
       border-top: none;
@@ -154,30 +176,59 @@
       color: #6b7280;
       margin-bottom: 8px;
     }
+    .link-list, .file-list {
+      display: grid;
+      gap: 14px;
+    }
+    .link-item, .file-item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+      padding: 18px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .link-item-title, .file-item-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .link-item-meta, .file-item-meta {
+      font-size: 14px;
+      color: #6b7280;
+    }
     .photo-grid {
       display: grid;
       gap: 16px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-    .photo-box {
-      aspect-ratio: 4 / 3;
+    .photo-card {
       border-radius: 20px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
       background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      font-size: 15px;
-      padding: 16px;
-      text-align: center;
+    }
+    .photo-card .caption {
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--muted);
     }
     footer {
       padding: 48px 0 72px;
       color: #6b7280;
       font-size: 14px;
-      background: #f8fafc;
-      border-top: 1px solid #e5e7eb;
+      background: var(--bg);
+      border-top: 1px solid var(--line);
     }
 
     .admin-fab {
@@ -185,7 +236,7 @@
       right: 20px;
       bottom: 20px;
       z-index: 1000;
-      background: #111827;
+      background: var(--accent);
       color: white;
       border: none;
       border-radius: 999px;
@@ -194,100 +245,120 @@
       font-size: 14px;
       box-shadow: 0 10px 24px rgba(0,0,0,0.18);
     }
-
+    .admin-bar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: none;
+      padding: 10px 16px;
+      background: var(--warn);
+      border-bottom: 1px solid var(--warn-line);
+      font-size: 14px;
+    }
+    .admin-bar.show { display: block; }
     .admin-panel {
       position: fixed;
       top: 0;
       right: 0;
-      width: min(420px, 100%);
+      width: min(520px, 100%);
       height: 100vh;
+      z-index: 1200;
       background: white;
-      border-left: 1px solid #e5e7eb;
-      z-index: 1100;
+      border-left: 1px solid var(--line);
       box-shadow: -10px 0 30px rgba(0,0,0,0.08);
       padding: 20px;
       overflow-y: auto;
       display: none;
     }
-
-    .admin-panel.open {
-      display: block;
+    .admin-panel.open { display: block; }
+    .admin-section {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 16px;
+      background: #fcfcfd;
     }
-
-    .admin-panel h3 {
-      margin: 0 0 16px;
-      font-size: 22px;
+    .admin-section h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
     }
-
+    .admin-section h4 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
     .admin-panel label {
       display: block;
-      margin: 14px 0 6px;
+      margin: 10px 0 6px;
       font-size: 14px;
       font-weight: 600;
     }
-
-    .admin-panel input,
-    .admin-panel textarea {
+    .admin-panel input, .admin-panel textarea, .admin-panel select {
       width: 100%;
       padding: 12px 14px;
       border: 1px solid #d1d5db;
       border-radius: 12px;
-      font: inherit;
+      background: white;
     }
-
     .admin-panel textarea {
-      min-height: 90px;
+      min-height: 92px;
       resize: vertical;
     }
-
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
     .admin-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      margin-top: 14px;
     }
-
     .small-note {
+      margin-top: 10px;
       font-size: 13px;
       color: #6b7280;
-      margin-top: 10px;
     }
-
-    .editable-on [data-edit] {
-      outline: 2px dashed #94a3b8;
-      outline-offset: 4px;
+    .hidden { display: none !important; }
+    .admin-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
     }
-
-    .top-admin-bar {
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      background: #fff7ed;
-      border-bottom: 1px solid #fed7aa;
-      padding: 10px 16px;
-      font-size: 14px;
-      display: none;
+    .admin-list-item {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      background: white;
     }
-
-    .top-admin-bar.show {
+    .admin-list-item strong {
       display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
     }
-
-    .hidden {
-      display: none !important;
+    .pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: #6b7280;
+      font-size: 12px;
+      background: #fff;
     }
-
     @media (max-width: 860px) {
       h1 { font-size: 38px; }
-      .grid-3, .photo-grid { grid-template-columns: 1fr; }
-      .nav { align-items: flex-start; gap: 12px; flex-direction: column; }
+      .grid-3, .photo-grid, .row { grid-template-columns: 1fr; }
+      .nav { flex-direction: column; align-items: flex-start; }
+      .link-item, .file-item { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <div id="adminBar" class="top-admin-bar">
-    관리자 모드가 켜져 있습니다.
-  </div>
+  <div id="adminBar" class="admin-bar">관리자 모드가 켜져 있습니다. 이 버전은 브라우저 저장 기반입니다. 다른 기기와 자동 동기화되지는 않습니다.</div>
 
   <header>
     <div class="wrap nav">
@@ -297,20 +368,19 @@
         <a href="#papers">논문</a>
         <a href="#fiction">소설</a>
         <a href="#photos">사진</a>
+        <a href="#links">링크</a>
+        <a href="#files">파일</a>
         <a href="#contact">연락</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero alt" style="border-top:none;">
+    <section class="hero">
       <div class="wrap">
         <div class="eyebrow" data-edit="eyebrow">Philosophy · Fiction · Photography</div>
         <h1 data-edit="heroTitle">논문, 소설, 사진을<br>한곳에 정리한 개인 홈페이지</h1>
-        <p data-edit="heroText">
-          철학, 글쓰기, 이미지 기록을 중심으로 작업합니다.
-          이곳에는 연구, 작품, 사진, 그리고 간단한 소개를 정리합니다.
-        </p>
+        <p data-edit="heroText">철학, 글쓰기, 이미지 기록을 중심으로 작업합니다. 이곳에는 연구, 작품, 사진, 그리고 간단한 소개를 정리합니다.</p>
         <div class="hero-actions">
           <a class="btn btn-dark" href="#papers">논문 보기</a>
           <a class="btn btn-light" href="#fiction">소설 보기</a>
@@ -322,11 +392,7 @@
     <section id="about">
       <div class="wrap">
         <h2>소개</h2>
-        <p class="section-intro" data-edit="aboutText">
-          언어, 이해, 인공지능, 삶의 의미를 중심으로 철학 작업을 이어가고 있습니다.
-          논문을 쓰고, 소설을 쓰며, 사진으로 장면을 기록합니다.
-          이 홈페이지는 그 작업들을 간결하게 모아 보여주기 위한 개인 아카이브입니다.
-        </p>
+        <p class="section-intro" data-edit="aboutText">언어, 이해, 인공지능, 삶의 의미를 중심으로 철학 작업을 이어가고 있습니다. 논문을 쓰고, 소설을 쓰며, 사진으로 장면을 기록합니다. 이 홈페이지는 연구, 작품, 이미지 기록을 간결하게 모아 보여주기 위한 개인 아카이브입니다.</p>
         <div class="grid grid-3">
           <div class="card">
             <h3 data-edit="aboutCard1Title">연구</h3>
@@ -347,26 +413,22 @@
     <section id="papers" class="alt">
       <div class="wrap">
         <h2>논문</h2>
-        <p class="section-intro" data-edit="papersIntro">
-          대표 논문과 진행 중인 작업을 정리하는 공간입니다.
-          아래 항목은 나중에 실제 제목과 PDF 링크로 바꾸면 됩니다.
-        </p>
-
+        <p class="section-intro" data-edit="papersIntro">대표 논문과 진행 중인 작업을 정리하는 공간입니다.</p>
         <div class="card">
           <div class="list-item">
             <div class="item-title" data-edit="paper1Title">논문 제목 1</div>
             <div class="item-meta" data-edit="paper1Meta">저널명 또는 상태 · 연도</div>
-            <p data-edit="paper1Text">논문의 핵심 주장을 2~3문장으로 짧게 소개합니다.</p>
+            <p data-edit="paper1Text">논문의 핵심 주장을 짧게 소개합니다.</p>
           </div>
           <div class="list-item">
             <div class="item-title" data-edit="paper2Title">논문 제목 2</div>
             <div class="item-meta" data-edit="paper2Meta">저널명 또는 상태 · 연도</div>
-            <p data-edit="paper2Text">이 자리에는 논문의 주제, 기여, 관심 분야를 간단히 적습니다.</p>
+            <p data-edit="paper2Text">이 자리에는 논문의 주제와 기여를 간단히 적습니다.</p>
           </div>
           <div class="list-item">
             <div class="item-title" data-edit="paper3Title">논문 제목 3</div>
             <div class="item-meta" data-edit="paper3Meta">투고 중 또는 준비 중 · 연도</div>
-            <p data-edit="paper3Text">나중에 PDF, 초록, DOI, 외부 링크를 연결할 수 있습니다.</p>
+            <p data-edit="paper3Text">PDF, 초록, DOI, 외부 링크를 연결할 수 있습니다.</p>
           </div>
         </div>
       </div>
@@ -375,19 +437,15 @@
     <section id="fiction">
       <div class="wrap">
         <h2>소설</h2>
-        <p class="section-intro" data-edit="fictionIntro">
-          소설 작품과 시리즈를 정리하는 공간입니다.
-          표지 이미지, 작품 소개, 읽기 링크를 붙이면 깔끔하게 보입니다.
-        </p>
-
+        <p class="section-intro" data-edit="fictionIntro">소설 작품과 시리즈를 정리하는 공간입니다.</p>
         <div class="grid grid-3">
           <div class="card">
             <h3 data-edit="fiction1Title">작품 제목 1</h3>
-            <p data-edit="fiction1Text">작품 소개를 2~3문장으로 적습니다. 청소년소설, 장편, 단편 같은 정보도 함께 넣을 수 있습니다.</p>
+            <p data-edit="fiction1Text">작품 소개를 적습니다.</p>
           </div>
           <div class="card">
             <h3 data-edit="fiction2Title">작품 제목 2</h3>
-            <p data-edit="fiction2Text">이 자리는 시리즈 소개나 출간 예정 작품 소개에도 쓸 수 있습니다.</p>
+            <p data-edit="fiction2Text">시리즈 소개나 출간 예정 작품 소개에도 쓸 수 있습니다.</p>
           </div>
           <div class="card">
             <h3 data-edit="fiction3Title">작품 제목 3</h3>
@@ -400,29 +458,31 @@
     <section id="photos" class="alt">
       <div class="wrap">
         <h2>사진</h2>
-        <p class="section-intro" data-edit="photosIntro">
-          나중에 실제 사진 파일로 바꿀 영역입니다.
-          지금은 자리만 먼저 만들어 둡니다.
-        </p>
+        <p class="section-intro" data-edit="photosIntro">관리자 모드에서 이미지를 추가하거나 삭제할 수 있습니다. 이 저장 방식은 브라우저 저장 기반이라 큰 파일에는 적합하지 않습니다.</p>
+        <div id="photoGrid" class="photo-grid"></div>
+      </div>
+    </section>
 
-        <div class="photo-grid">
-          <div class="photo-box" data-edit="photo1">사진 1</div>
-          <div class="photo-box" data-edit="photo2">사진 2</div>
-          <div class="photo-box" data-edit="photo3">사진 3</div>
-          <div class="photo-box" data-edit="photo4">사진 4</div>
-          <div class="photo-box" data-edit="photo5">사진 5</div>
-          <div class="photo-box" data-edit="photo6">사진 6</div>
-        </div>
+    <section id="links">
+      <div class="wrap">
+        <h2>링크</h2>
+        <p class="section-intro" data-edit="linksIntro">논문 링크, 서점 링크, Google Scholar, ORCID, 인터뷰, 기사 등을 정리합니다.</p>
+        <div id="linksList" class="link-list"></div>
+      </div>
+    </section>
+
+    <section id="files" class="alt">
+      <div class="wrap">
+        <h2>파일</h2>
+        <p class="section-intro" data-edit="filesIntro">작은 파일은 관리자 모드에서 추가할 수 있습니다. 큰 PDF나 원본 사진은 이 방식으로 올리기 어렵습니다.</p>
+        <div id="filesList" class="file-list"></div>
       </div>
     </section>
 
     <section id="contact">
       <div class="wrap">
         <h2>연락</h2>
-        <p class="section-intro" data-edit="contactIntro">
-          이메일, 구글 스칼라, ORCID, 출판 링크 등을 여기에 넣으면 됩니다.
-        </p>
-
+        <p class="section-intro" data-edit="contactIntro">이메일, 구글 스칼라, ORCID, 출판 링크 등을 여기에 넣으면 됩니다.</p>
         <div class="card">
           <p data-edit="contactEmail">이메일: your-email@example.com</p>
           <p data-edit="contactScholar">Google Scholar: 링크 추가 예정</p>
@@ -433,50 +493,103 @@
   </main>
 
   <footer>
-    <div class="wrap" data-edit="footerText">
-      © 2026 Choi Yongho. All rights reserved.
-    </div>
+    <div class="wrap" data-edit="footerText">© 2026 Choi Yongho. All rights reserved.</div>
   </footer>
 
   <button id="adminToggle" class="admin-fab">관리자 모드</button>
 
   <aside id="adminPanel" class="admin-panel">
-    <h3>관리자 모드</h3>
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+      <h2 style="margin:0; font-size:24px;">관리자 모드</h2>
+      <button id="closePanelBtn" class="btn btn-light">닫기</button>
+    </div>
 
-    <div id="loginBox">
+    <div id="loginBox" class="admin-section">
+      <h3>로그인</h3>
       <label for="adminPassword">비밀번호</label>
       <input id="adminPassword" type="password" placeholder="비밀번호 입력" />
       <div class="admin-actions">
         <button class="btn btn-dark" id="loginBtn">들어가기</button>
       </div>
-      <div class="small-note">
-        이 비밀번호는 코드 안에 들어가는 간단한 잠금입니다. 강한 보안용은 아닙니다.
-      </div>
+      <div class="small-note">이 버전의 비밀번호 검사는 브라우저 안에서 동작합니다. 즉, 진짜 보안 관리자 시스템은 아닙니다.</div>
     </div>
 
     <div id="editorBox" class="hidden">
-      <label for="fieldSelect">수정할 항목</label>
-      <select id="fieldSelect" style="width:100%; padding:12px 14px; border:1px solid #d1d5db; border-radius:12px;">
-      </select>
-
-      <label for="fieldValue">내용</label>
-      <textarea id="fieldValue"></textarea>
-
-      <div class="admin-actions">
-        <button class="btn btn-dark" id="applyBtn">적용</button>
-        <button class="btn btn-light" id="saveBtn">저장</button>
-        <button class="btn btn-light" id="resetBtn">기본값 복원</button>
-        <button class="btn btn-light" id="logoutBtn">종료</button>
+      <div class="admin-section">
+        <h3>문구 수정</h3>
+        <label for="fieldSelect">수정할 항목</label>
+        <select id="fieldSelect"></select>
+        <label for="fieldValue">내용</label>
+        <textarea id="fieldValue"></textarea>
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="applyBtn">적용</button>
+          <button class="btn btn-light" id="saveTextBtn">문구 저장</button>
+        </div>
       </div>
 
-      <div class="small-note">
-        저장은 이 브라우저의 localStorage에 됩니다.
+      <div class="admin-section">
+        <h3>링크 관리</h3>
+        <div class="row">
+          <div>
+            <label for="linkTitle">제목</label>
+            <input id="linkTitle" type="text" placeholder="예: Google Scholar" />
+          </div>
+          <div>
+            <label for="linkCategory">분류</label>
+            <input id="linkCategory" type="text" placeholder="예: 연구, 소설, 인터뷰" />
+          </div>
+        </div>
+        <label for="linkUrl">주소</label>
+        <input id="linkUrl" type="url" placeholder="https://..." />
+        <label for="linkDesc">설명</label>
+        <textarea id="linkDesc" placeholder="짧은 설명"></textarea>
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="addLinkBtn">링크 추가</button>
+        </div>
+        <div id="adminLinksList" class="admin-list"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>사진 관리</h3>
+        <label for="photoFileInput">이미지 선택</label>
+        <input id="photoFileInput" type="file" accept="image/*" />
+        <label for="photoCaption">설명</label>
+        <input id="photoCaption" type="text" placeholder="사진 설명" />
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="addPhotoBtn">사진 추가</button>
+        </div>
+        <div class="small-note">브라우저 저장 한계 때문에 사진은 적은 수의 작은 파일만 권합니다.</div>
+        <div id="adminPhotosList" class="admin-list"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>파일 관리</h3>
+        <label for="docFileInput">파일 선택</label>
+        <input id="docFileInput" type="file" accept=".pdf,.doc,.docx,.txt,.md,.jpg,.jpeg,.png,.webp" />
+        <label for="docTitle">표시 제목</label>
+        <input id="docTitle" type="text" placeholder="예: CV PDF" />
+        <div class="admin-actions">
+          <button class="btn btn-dark" id="addFileBtn">파일 추가</button>
+        </div>
+        <div class="small-note">이 방식은 큰 PDF나 많은 파일에 적합하지 않습니다. Vercel 정적 사이트에 진짜 파일 저장소가 생기는 것은 아닙니다.</div>
+        <div id="adminFilesList" class="admin-list"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>관리</h3>
+        <div class="admin-actions">
+          <button class="btn btn-light" id="exportBtn">현재 데이터 내보내기</button>
+          <button class="btn btn-danger" id="resetBtn">전체 초기화</button>
+          <button class="btn btn-light" id="logoutBtn">종료</button>
+        </div>
+        <div class="small-note">이 버전은 localStorage에 저장됩니다. 공개 사이트 전체를 영구적으로 바꾸는 방식은 아닙니다.</div>
       </div>
     </div>
   </aside>
 
   <script>
     const ADMIN_PASSWORD = "gibran0830!";
+    const STORAGE_KEY = "choiyongho_homepage_data_v2";
 
     const fieldLabels = {
       brand: "상단 이름",
@@ -508,12 +621,8 @@
       fiction3Title: "소설 3 제목",
       fiction3Text: "소설 3 설명",
       photosIntro: "사진 섹션 소개",
-      photo1: "사진 1 자리",
-      photo2: "사진 2 자리",
-      photo3: "사진 3 자리",
-      photo4: "사진 4 자리",
-      photo5: "사진 5 자리",
-      photo6: "사진 6 자리",
+      linksIntro: "링크 섹션 소개",
+      filesIntro: "파일 섹션 소개",
       contactIntro: "연락 섹션 소개",
       contactEmail: "이메일",
       contactScholar: "Google Scholar",
@@ -521,60 +630,201 @@
       footerText: "푸터 문구"
     };
 
-    function getDefaultContent() {
-      const defaults = {};
-      document.querySelectorAll("[data-edit]").forEach(el => {
-        defaults[el.dataset.edit] = el.innerHTML.trim();
+    function collectDefaultText() {
+      const obj = {};
+      document.querySelectorAll('[data-edit]').forEach(el => {
+        obj[el.dataset.edit] = el.innerHTML.trim();
       });
-      return defaults;
+      return obj;
     }
 
-    const defaultContent = getDefaultContent();
+    const defaultState = {
+      text: collectDefaultText(),
+      links: [
+        { id: crypto.randomUUID(), title: 'Google Scholar', category: '연구', url: 'https://scholar.google.com', desc: '학술 논문 목록과 인용 정보' },
+        { id: crypto.randomUUID(), title: 'ORCID', category: '연구', url: 'https://orcid.org', desc: '연구자 식별 정보' }
+      ],
+      photos: [],
+      files: []
+    };
 
-    function loadSavedContent() {
-      const saved = JSON.parse(localStorage.getItem("homepageContent") || "{}");
-      Object.entries(saved).forEach(([key, value]) => {
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return structuredClone(defaultState);
+      try {
+        const parsed = JSON.parse(raw);
+        return {
+          text: { ...defaultState.text, ...(parsed.text || {}) },
+          links: Array.isArray(parsed.links) ? parsed.links : structuredClone(defaultState.links),
+          photos: Array.isArray(parsed.photos) ? parsed.photos : [],
+          files: Array.isArray(parsed.files) ? parsed.files : []
+        };
+      } catch {
+        return structuredClone(defaultState);
+      }
+    }
+
+    let state = loadState();
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function applyText() {
+      Object.entries(state.text).forEach(([key, value]) => {
         const el = document.querySelector(`[data-edit="${key}"]`);
         if (el) el.innerHTML = value;
       });
     }
 
-    function saveCurrentContent() {
-      const current = {};
-      document.querySelectorAll("[data-edit]").forEach(el => {
-        current[el.dataset.edit] = el.innerHTML;
-      });
-      localStorage.setItem("homepageContent", JSON.stringify(current));
-      alert("저장되었습니다.");
+    function renderLinks() {
+      const list = document.getElementById('linksList');
+      const adminList = document.getElementById('adminLinksList');
+      if (!state.links.length) {
+        list.innerHTML = '<div class="card"><p>아직 추가된 링크가 없습니다.</p></div>';
+        adminList.innerHTML = '<div class="small-note">등록된 링크가 없습니다.</div>';
+        return;
+      }
+      list.innerHTML = state.links.map(item => `
+        <div class="link-item">
+          <div>
+            <div class="link-item-title"><a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a></div>
+            <div class="link-item-meta">${escapeHtml(item.category || '링크')}</div>
+            <div style="margin-top:6px; color:var(--muted); font-size:15px;">${escapeHtml(item.desc || '')}</div>
+          </div>
+          <div><a class="btn btn-light" href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer">열기</a></div>
+        </div>`).join('');
+      adminList.innerHTML = state.links.map(item => `
+        <div class="admin-list-item">
+          <div>
+            <strong>${escapeHtml(item.title)}</strong>
+            <div class="small-note">${escapeHtml(item.category || '')}</div>
+            <div class="small-note">${escapeHtml(item.url)}</div>
+          </div>
+          <button class="btn btn-danger" onclick="deleteLink('${item.id}')">삭제</button>
+        </div>`).join('');
     }
 
-    function resetContent() {
-      Object.entries(defaultContent).forEach(([key, value]) => {
-        const el = document.querySelector(`[data-edit="${key}"]`);
-        if (el) el.innerHTML = value;
-      });
-      localStorage.removeItem("homepageContent");
-      syncFieldValue();
-      alert("기본값으로 복원되었습니다.");
+    function renderPhotos() {
+      const grid = document.getElementById('photoGrid');
+      const adminList = document.getElementById('adminPhotosList');
+      if (!state.photos.length) {
+        grid.innerHTML = Array.from({ length: 6 }).map((_, i) => `
+          <div class="photo-card">
+            <img alt="빈 사진 자리" src="data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'><rect width='800' height='600' fill='#eef2f7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#94a3b8' font-size='28'>사진 ${i+1}</text></svg>`) }">
+            <div class="caption">사진을 추가해 주세요</div>
+          </div>`).join('');
+        adminList.innerHTML = '<div class="small-note">등록된 사진이 없습니다.</div>';
+        return;
+      }
+      grid.innerHTML = state.photos.map(item => `
+        <div class="photo-card">
+          <img src="${item.dataUrl}" alt="${escapeAttr(item.caption || '사진')}" />
+          <div class="caption">${escapeHtml(item.caption || '')}</div>
+        </div>`).join('');
+      adminList.innerHTML = state.photos.map(item => `
+        <div class="admin-list-item">
+          <div>
+            <strong>${escapeHtml(item.caption || '설명 없음')}</strong>
+            <div class="small-note">이미지</div>
+          </div>
+          <button class="btn btn-danger" onclick="deletePhoto('${item.id}')">삭제</button>
+        </div>`).join('');
     }
 
-    const adminToggle = document.getElementById("adminToggle");
-    const adminPanel = document.getElementById("adminPanel");
-    const loginBtn = document.getElementById("loginBtn");
-    const loginBox = document.getElementById("loginBox");
-    const editorBox = document.getElementById("editorBox");
-    const adminBar = document.getElementById("adminBar");
-    const fieldSelect = document.getElementById("fieldSelect");
-    const fieldValue = document.getElementById("fieldValue");
-    const applyBtn = document.getElementById("applyBtn");
-    const saveBtn = document.getElementById("saveBtn");
-    const resetBtn = document.getElementById("resetBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
+    function renderFiles() {
+      const list = document.getElementById('filesList');
+      const adminList = document.getElementById('adminFilesList');
+      if (!state.files.length) {
+        list.innerHTML = '<div class="card"><p>아직 추가된 파일이 없습니다.</p></div>';
+        adminList.innerHTML = '<div class="small-note">등록된 파일이 없습니다.</div>';
+        return;
+      }
+      list.innerHTML = state.files.map(item => `
+        <div class="file-item">
+          <div>
+            <div class="file-item-title"><a href="${item.dataUrl}" download="${escapeAttr(item.fileName)}">${escapeHtml(item.title)}</a></div>
+            <div class="file-item-meta">${escapeHtml(item.fileName)} · ${formatBytes(item.size)}</div>
+          </div>
+          <div><a class="btn btn-light" href="${item.dataUrl}" download="${escapeAttr(item.fileName)}">다운로드</a></div>
+        </div>`).join('');
+      adminList.innerHTML = state.files.map(item => `
+        <div class="admin-list-item">
+          <div>
+            <strong>${escapeHtml(item.title)}</strong>
+            <div class="small-note">${escapeHtml(item.fileName)} · ${formatBytes(item.size)}</div>
+          </div>
+          <button class="btn btn-danger" onclick="deleteFile('${item.id}')">삭제</button>
+        </div>`).join('');
+    }
 
-    function populateFields() {
-      fieldSelect.innerHTML = "";
+    function renderAll() {
+      applyText();
+      renderLinks();
+      renderPhotos();
+      renderFiles();
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value);
+    }
+
+    function formatBytes(bytes) {
+      if (bytes < 1024) return `${bytes} B`;
+      if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+      return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    }
+
+    function readAsDataURL(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    window.deleteLink = function(id) {
+      state.links = state.links.filter(item => item.id !== id);
+      saveState();
+      renderLinks();
+    };
+
+    window.deletePhoto = function(id) {
+      state.photos = state.photos.filter(item => item.id !== id);
+      saveState();
+      renderPhotos();
+    };
+
+    window.deleteFile = function(id) {
+      state.files = state.files.filter(item => item.id !== id);
+      saveState();
+      renderFiles();
+    };
+
+    const adminToggle = document.getElementById('adminToggle');
+    const adminPanel = document.getElementById('adminPanel');
+    const closePanelBtn = document.getElementById('closePanelBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginBox = document.getElementById('loginBox');
+    const editorBox = document.getElementById('editorBox');
+    const adminBar = document.getElementById('adminBar');
+    const fieldSelect = document.getElementById('fieldSelect');
+    const fieldValue = document.getElementById('fieldValue');
+
+    function populateFieldOptions() {
+      fieldSelect.innerHTML = '';
       Object.entries(fieldLabels).forEach(([key, label]) => {
-        const option = document.createElement("option");
+        const option = document.createElement('option');
         option.value = key;
         option.textContent = label;
         fieldSelect.appendChild(option);
@@ -583,65 +833,139 @@
 
     function syncFieldValue() {
       const key = fieldSelect.value;
-      const el = document.querySelector(`[data-edit="${key}"]`);
-      fieldValue.value = el ? el.innerHTML.replace(/<br\s*\/?>/gi, "\n") : "";
+      const value = state.text[key] || '';
+      fieldValue.value = value.replace(/<br\s*\/?/gi, '\n').replace(/>/g, match => match === '>' ? '>' : match);
+      fieldValue.value = fieldValue.value.replace(/<br\s*\/?>/gi, '\n');
     }
 
-    function applyFieldValue() {
-      const key = fieldSelect.value;
-      const el = document.querySelector(`[data-edit="${key}"]`);
-      if (!el) return;
-      const html = fieldValue.value.replace(/\n/g, "<br>");
-      el.innerHTML = html;
-    }
+    function openPanel() { adminPanel.classList.add('open'); }
+    function closePanel() { adminPanel.classList.remove('open'); }
 
-    function openAdminPanel() {
-      adminPanel.classList.add("open");
-    }
-
-    function closeAdminPanel() {
-      adminPanel.classList.remove("open");
-    }
-
-    function enterAdminMode() {
-      loginBox.classList.add("hidden");
-      editorBox.classList.remove("hidden");
-      document.body.classList.add("editable-on");
-      adminBar.classList.add("show");
+    function enterAdmin() {
+      loginBox.classList.add('hidden');
+      editorBox.classList.remove('hidden');
+      adminBar.classList.add('show');
       syncFieldValue();
     }
 
-    function exitAdminMode() {
-      loginBox.classList.remove("hidden");
-      editorBox.classList.add("hidden");
-      document.body.classList.remove("editable-on");
-      adminBar.classList.remove("show");
-      document.getElementById("adminPassword").value = "";
-      closeAdminPanel();
+    function exitAdmin() {
+      loginBox.classList.remove('hidden');
+      editorBox.classList.add('hidden');
+      adminBar.classList.remove('show');
+      document.getElementById('adminPassword').value = '';
+      closePanel();
     }
 
-    adminToggle.addEventListener("click", openAdminPanel);
+    adminToggle.addEventListener('click', openPanel);
+    closePanelBtn.addEventListener('click', closePanel);
 
-    loginBtn.addEventListener("click", () => {
-      const pw = document.getElementById("adminPassword").value;
-      if (pw === ADMIN_PASSWORD) {
-        enterAdminMode();
-      } else {
-        alert("비밀번호가 다릅니다.");
+    loginBtn.addEventListener('click', () => {
+      const pw = document.getElementById('adminPassword').value;
+      if (pw === ADMIN_PASSWORD) enterAdmin();
+      else alert('비밀번호가 다릅니다.');
+    });
+
+    fieldSelect.addEventListener('change', syncFieldValue);
+    document.getElementById('applyBtn').addEventListener('click', () => {
+      const key = fieldSelect.value;
+      state.text[key] = fieldValue.value.replace(/\n/g, '<br>');
+      applyText();
+    });
+
+    document.getElementById('saveTextBtn').addEventListener('click', () => {
+      const key = fieldSelect.value;
+      state.text[key] = fieldValue.value.replace(/\n/g, '<br>');
+      saveState();
+      renderAll();
+      alert('문구를 저장했습니다.');
+    });
+
+    document.getElementById('addLinkBtn').addEventListener('click', () => {
+      const title = document.getElementById('linkTitle').value.trim();
+      const category = document.getElementById('linkCategory').value.trim();
+      const url = document.getElementById('linkUrl').value.trim();
+      const desc = document.getElementById('linkDesc').value.trim();
+      if (!title || !url) {
+        alert('링크 제목과 주소를 입력하세요.');
+        return;
       }
+      state.links.unshift({ id: crypto.randomUUID(), title, category, url, desc });
+      saveState();
+      renderLinks();
+      document.getElementById('linkTitle').value = '';
+      document.getElementById('linkCategory').value = '';
+      document.getElementById('linkUrl').value = '';
+      document.getElementById('linkDesc').value = '';
     });
 
-    fieldSelect.addEventListener("change", syncFieldValue);
-    applyBtn.addEventListener("click", applyFieldValue);
-    saveBtn.addEventListener("click", () => {
-      applyFieldValue();
-      saveCurrentContent();
+    document.getElementById('addPhotoBtn').addEventListener('click', async () => {
+      const fileInput = document.getElementById('photoFileInput');
+      const caption = document.getElementById('photoCaption').value.trim();
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('사진 파일을 선택하세요.');
+        return;
+      }
+      if (file.size > 1.5 * 1024 * 1024) {
+        alert('이 버전에서는 사진 한 장을 1.5MB 이하로 권합니다.');
+        return;
+      }
+      const dataUrl = await readAsDataURL(file);
+      state.photos.unshift({ id: crypto.randomUUID(), caption, dataUrl });
+      saveState();
+      renderPhotos();
+      fileInput.value = '';
+      document.getElementById('photoCaption').value = '';
     });
-    resetBtn.addEventListener("click", resetContent);
-    logoutBtn.addEventListener("click", exitAdminMode);
 
-    loadSavedContent();
-    populateFields();
+    document.getElementById('addFileBtn').addEventListener('click', async () => {
+      const fileInput = document.getElementById('docFileInput');
+      const file = fileInput.files[0];
+      const title = document.getElementById('docTitle').value.trim();
+      if (!file) {
+        alert('파일을 선택하세요.');
+        return;
+      }
+      if (file.size > 1.5 * 1024 * 1024) {
+        alert('이 버전에서는 파일 한 개를 1.5MB 이하로 권합니다.');
+        return;
+      }
+      const dataUrl = await readAsDataURL(file);
+      state.files.unshift({
+        id: crypto.randomUUID(),
+        title: title || file.name,
+        fileName: file.name,
+        size: file.size,
+        dataUrl
+      });
+      saveState();
+      renderFiles();
+      fileInput.value = '';
+      document.getElementById('docTitle').value = '';
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'homepage-data.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      if (!confirm('문구, 링크, 사진, 파일을 모두 초기화합니다.')) return;
+      state = structuredClone(defaultState);
+      saveState();
+      renderAll();
+      syncFieldValue();
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', exitAdmin);
+
+    populateFieldOptions();
+    renderAll();
     syncFieldValue();
   </script>
 </body>
