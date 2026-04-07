@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>최용호 | 논문, 소설, 사진</title>
+  <meta name="description" content="철학, 글쓰기, 이미지 기록. 최용호의 논문, 소설, 사진 아카이브." />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      color: #111827;
+      background: #f8fafc;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .menu {
+      display: flex;
+      gap: 18px;
+      font-size: 15px;
+      color: #4b5563;
+      flex-wrap: wrap;
+    }
+    .hero {
+      padding: 96px 0 72px;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #4b5563;
+      background: white;
+    }
+    h1 {
+      margin: 20px 0 18px;
+      font-size: 52px;
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+    .hero p {
+      max-width: 760px;
+      font-size: 19px;
+      color: #4b5563;
+    }
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 20px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .btn-dark {
+      background: #111827;
+      color: white;
+    }
+    .btn-light {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #111827;
+    }
+    section {
+      padding: 72px 0;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+    }
+    section.alt {
+      background: #f8fafc;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .section-intro {
+      max-width: 760px;
+      color: #4b5563;
+      margin-bottom: 32px;
+      font-size: 17px;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+    .card p {
+      margin: 0;
+      color: #4b5563;
+      font-size: 15px;
+    }
+    .list-item {
+      padding: 18px 0;
+      border-top: 1px solid #e5e7eb;
+    }
+    .list-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+    .item-title {
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+    .item-meta {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+    .photo-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .photo-box {
+      aspect-ratio: 4 / 3;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 15px;
+    }
+    footer {
+      padding: 48px 0 72px;
+      color: #6b7280;
+      font-size: 14px;
+      background: #f8fafc;
+      border-top: 1px solid #e5e7eb;
+    }
+    @media (max-width: 860px) {
+      h1 { font-size: 38px; }
+      .grid-3, .photo-grid { grid-template-columns: 1fr; }
+      .nav { align-items: flex-start; gap: 12px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">최용호</div>
+      <nav class="menu">
+        <a href="#about">소개</a>
+        <a href="#papers">논문</a>
+        <a href="#fiction">소설</a>
+        <a href="#photos">사진</a>
+        <a href="#contact">연락</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero alt" style="border-top:none;">
+      <div class="wrap">
+        <div class="eyebrow">Philosophy · Fiction · Photography</div>
+        <h1>논문, 소설, 사진을<br>한곳에 정리한 개인 홈페이지</h1>
+        <p>
+          철학, 글쓰기, 이미지 기록을 중심으로 작업합니다.
+          이곳에는 연구, 작품, 사진, 그리고 간단한 소개를 정리합니다.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#papers">논문 보기</a>
+          <a class="btn btn-light" href="#fiction">소설 보기</a>
+          <a class="btn btn-light" href="#photos">사진 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <h2>소개</h2>
+        <p class="section-intro">
+          언어, 이해, 인공지능, 삶의 의미를 중심으로 철학 작업을 이어가고 있습니다.
+          논문을 쓰고, 소설을 쓰며, 사진으로 장면을 기록합니다.
+          이 홈페이지는 그 작업들을 간결하게 모아 보여주기 위한 개인 아카이브입니다.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>연구</h3>
+            <p>철학 논문, 발표문, 연구 주제를 정리합니다.</p>
+          </div>
+          <div class="card">
+            <h3>소설</h3>
+            <p>단편, 장편, 청소년 독자를 위한 글을 소개합니다.</p>
+          </div>
+          <div class="card">
+            <h3>사진</h3>
+            <p>풍경, 일상, 기록 사진을 주제별로 모읍니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="papers" class="alt">
+      <div class="wrap">
+        <h2>논문</h2>
+        <p class="section-intro">
+          대표 논문과 진행 중인 작업을 정리하는 공간입니다.
+          아래 항목은 나중에 실제 제목과 PDF 링크로 바꾸면 됩니다.
+        </p>
+
+        <div class="card">
+          <div class="list-item">
+            <div class="item-title">논문 제목 1</div>
+            <div class="item-meta">저널명 또는 상태 · 연도</div>
+            <p>논문의 핵심 주장을 2~3문장으로 짧게 소개합니다.</p>
+          </div>
+          <div class="list-item">
+            <div class="item-title">논문 제목 2</div>
+            <div class="item-meta">저널명 또는 상태 · 연도</div>
+            <p>이 자리에는 논문의 주제, 기여, 관심 분야를 간단히 적습니다.</p>
+          </div>
+          <div class="list-item">
+            <div class="item-title">논문 제목 3</div>
+            <div class="item-meta">투고 중 또는 준비 중 · 연도</div>
+            <p>나중에 PDF, 초록, DOI, 외부 링크를 연결할 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fiction">
+      <div class="wrap">
+        <h2>소설</h2>
+        <p class="section-intro">
+          소설 작품과 시리즈를 정리하는 공간입니다.
+          표지 이미지, 작품 소개, 읽기 링크를 붙이면 깔끔하게 보입니다.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>작품 제목 1</h3>
+            <p>작품 소개를 2~3문장으로 적습니다. 청소년소설, 장편, 단편 같은 정보도 함께 넣을 수 있습니다.</p>
+          </div>
+          <div class="card">
+            <h3>작품 제목 2</h3>
+            <p>이 자리는 시리즈 소개나 출간 예정 작품 소개에도 쓸 수 있습니다.</p>
+          </div>
+          <div class="card">
+            <h3>작품 제목 3</h3>
+            <p>작품 링크나 구매 링크를 연결하기 좋은 카드입니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos" class="alt">
+      <div class="wrap">
+        <h2>사진</h2>
+        <p class="section-intro">
+          나중에 실제 사진 파일로 바꿀 영역입니다.
+          지금은 자리만 먼저 만들어 둡니다.
+        </p>
+
+        <div class="photo-grid">
+          <div class="photo-box">사진 1</div>
+          <div class="photo-box">사진 2</div>
+          <div class="photo-box">사진 3</div>
+          <div class="photo-box">사진 4</div>
+          <div class="photo-box">사진 5</div>
+          <div class="photo-box">사진 6</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>연락</h2>
+        <p class="section-intro">
+          이메일, 구글 스칼라, ORCID, 출판 링크 등을 여기에 넣으면 됩니다.
+        </p>
+
+        <div class="card">
+          <p>이메일: your-email@example.com</p>
+          <p>Google Scholar: 링크 추가 예정</p>
+          <p>ORCID: 링크 추가 예정</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Choi Yongho. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
