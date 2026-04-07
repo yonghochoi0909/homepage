@@ -81,6 +81,8 @@
       font-size: 15px;
       font-weight: 600;
       display: inline-block;
+      border: none;
+      cursor: pointer;
     }
     .btn-dark {
       background: #111827;
@@ -167,6 +169,8 @@
       justify-content: center;
       color: #6b7280;
       font-size: 15px;
+      padding: 16px;
+      text-align: center;
     }
     footer {
       padding: 48px 0 72px;
@@ -175,6 +179,104 @@
       background: #f8fafc;
       border-top: 1px solid #e5e7eb;
     }
+
+    .admin-fab {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+      background: #111827;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .admin-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(420px, 100%);
+      height: 100vh;
+      background: white;
+      border-left: 1px solid #e5e7eb;
+      z-index: 1100;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+      padding: 20px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .admin-panel.open {
+      display: block;
+    }
+
+    .admin-panel h3 {
+      margin: 0 0 16px;
+      font-size: 22px;
+    }
+
+    .admin-panel label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .admin-panel input,
+    .admin-panel textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font: inherit;
+    }
+
+    .admin-panel textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .small-note {
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    .editable-on [data-edit] {
+      outline: 2px dashed #94a3b8;
+      outline-offset: 4px;
+    }
+
+    .top-admin-bar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: #fff7ed;
+      border-bottom: 1px solid #fed7aa;
+      padding: 10px 16px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .top-admin-bar.show {
+      display: block;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
     @media (max-width: 860px) {
       h1 { font-size: 38px; }
       .grid-3, .photo-grid { grid-template-columns: 1fr; }
@@ -183,9 +285,13 @@
   </style>
 </head>
 <body>
+  <div id="adminBar" class="top-admin-bar">
+    관리자 모드가 켜져 있습니다.
+  </div>
+
   <header>
     <div class="wrap nav">
-      <div class="brand">최용호</div>
+      <div class="brand" data-edit="brand">최용호</div>
       <nav class="menu">
         <a href="#about">소개</a>
         <a href="#papers">논문</a>
@@ -199,9 +305,9 @@
   <main>
     <section class="hero alt" style="border-top:none;">
       <div class="wrap">
-        <div class="eyebrow">Philosophy · Fiction · Photography</div>
-        <h1>논문, 소설, 사진을<br>한곳에 정리한 개인 홈페이지</h1>
-        <p>
+        <div class="eyebrow" data-edit="eyebrow">Philosophy · Fiction · Photography</div>
+        <h1 data-edit="heroTitle">논문, 소설, 사진을<br>한곳에 정리한 개인 홈페이지</h1>
+        <p data-edit="heroText">
           철학, 글쓰기, 이미지 기록을 중심으로 작업합니다.
           이곳에는 연구, 작품, 사진, 그리고 간단한 소개를 정리합니다.
         </p>
@@ -216,23 +322,23 @@
     <section id="about">
       <div class="wrap">
         <h2>소개</h2>
-        <p class="section-intro">
+        <p class="section-intro" data-edit="aboutText">
           언어, 이해, 인공지능, 삶의 의미를 중심으로 철학 작업을 이어가고 있습니다.
           논문을 쓰고, 소설을 쓰며, 사진으로 장면을 기록합니다.
           이 홈페이지는 그 작업들을 간결하게 모아 보여주기 위한 개인 아카이브입니다.
         </p>
         <div class="grid grid-3">
           <div class="card">
-            <h3>연구</h3>
-            <p>철학 논문, 발표문, 연구 주제를 정리합니다.</p>
+            <h3 data-edit="aboutCard1Title">연구</h3>
+            <p data-edit="aboutCard1Text">철학 논문, 발표문, 연구 주제를 정리합니다.</p>
           </div>
           <div class="card">
-            <h3>소설</h3>
-            <p>단편, 장편, 청소년 독자를 위한 글을 소개합니다.</p>
+            <h3 data-edit="aboutCard2Title">소설</h3>
+            <p data-edit="aboutCard2Text">단편, 장편, 청소년 독자를 위한 글을 소개합니다.</p>
           </div>
           <div class="card">
-            <h3>사진</h3>
-            <p>풍경, 일상, 기록 사진을 주제별로 모읍니다.</p>
+            <h3 data-edit="aboutCard3Title">사진</h3>
+            <p data-edit="aboutCard3Text">풍경, 일상, 기록 사진을 주제별로 모읍니다.</p>
           </div>
         </div>
       </div>
@@ -241,26 +347,26 @@
     <section id="papers" class="alt">
       <div class="wrap">
         <h2>논문</h2>
-        <p class="section-intro">
+        <p class="section-intro" data-edit="papersIntro">
           대표 논문과 진행 중인 작업을 정리하는 공간입니다.
           아래 항목은 나중에 실제 제목과 PDF 링크로 바꾸면 됩니다.
         </p>
 
         <div class="card">
           <div class="list-item">
-            <div class="item-title">논문 제목 1</div>
-            <div class="item-meta">저널명 또는 상태 · 연도</div>
-            <p>논문의 핵심 주장을 2~3문장으로 짧게 소개합니다.</p>
+            <div class="item-title" data-edit="paper1Title">논문 제목 1</div>
+            <div class="item-meta" data-edit="paper1Meta">저널명 또는 상태 · 연도</div>
+            <p data-edit="paper1Text">논문의 핵심 주장을 2~3문장으로 짧게 소개합니다.</p>
           </div>
           <div class="list-item">
-            <div class="item-title">논문 제목 2</div>
-            <div class="item-meta">저널명 또는 상태 · 연도</div>
-            <p>이 자리에는 논문의 주제, 기여, 관심 분야를 간단히 적습니다.</p>
+            <div class="item-title" data-edit="paper2Title">논문 제목 2</div>
+            <div class="item-meta" data-edit="paper2Meta">저널명 또는 상태 · 연도</div>
+            <p data-edit="paper2Text">이 자리에는 논문의 주제, 기여, 관심 분야를 간단히 적습니다.</p>
           </div>
           <div class="list-item">
-            <div class="item-title">논문 제목 3</div>
-            <div class="item-meta">투고 중 또는 준비 중 · 연도</div>
-            <p>나중에 PDF, 초록, DOI, 외부 링크를 연결할 수 있습니다.</p>
+            <div class="item-title" data-edit="paper3Title">논문 제목 3</div>
+            <div class="item-meta" data-edit="paper3Meta">투고 중 또는 준비 중 · 연도</div>
+            <p data-edit="paper3Text">나중에 PDF, 초록, DOI, 외부 링크를 연결할 수 있습니다.</p>
           </div>
         </div>
       </div>
@@ -269,23 +375,23 @@
     <section id="fiction">
       <div class="wrap">
         <h2>소설</h2>
-        <p class="section-intro">
+        <p class="section-intro" data-edit="fictionIntro">
           소설 작품과 시리즈를 정리하는 공간입니다.
           표지 이미지, 작품 소개, 읽기 링크를 붙이면 깔끔하게 보입니다.
         </p>
 
         <div class="grid grid-3">
           <div class="card">
-            <h3>작품 제목 1</h3>
-            <p>작품 소개를 2~3문장으로 적습니다. 청소년소설, 장편, 단편 같은 정보도 함께 넣을 수 있습니다.</p>
+            <h3 data-edit="fiction1Title">작품 제목 1</h3>
+            <p data-edit="fiction1Text">작품 소개를 2~3문장으로 적습니다. 청소년소설, 장편, 단편 같은 정보도 함께 넣을 수 있습니다.</p>
           </div>
           <div class="card">
-            <h3>작품 제목 2</h3>
-            <p>이 자리는 시리즈 소개나 출간 예정 작품 소개에도 쓸 수 있습니다.</p>
+            <h3 data-edit="fiction2Title">작품 제목 2</h3>
+            <p data-edit="fiction2Text">이 자리는 시리즈 소개나 출간 예정 작품 소개에도 쓸 수 있습니다.</p>
           </div>
           <div class="card">
-            <h3>작품 제목 3</h3>
-            <p>작품 링크나 구매 링크를 연결하기 좋은 카드입니다.</p>
+            <h3 data-edit="fiction3Title">작품 제목 3</h3>
+            <p data-edit="fiction3Text">작품 링크나 구매 링크를 연결하기 좋은 카드입니다.</p>
           </div>
         </div>
       </div>
@@ -294,18 +400,18 @@
     <section id="photos" class="alt">
       <div class="wrap">
         <h2>사진</h2>
-        <p class="section-intro">
+        <p class="section-intro" data-edit="photosIntro">
           나중에 실제 사진 파일로 바꿀 영역입니다.
           지금은 자리만 먼저 만들어 둡니다.
         </p>
 
         <div class="photo-grid">
-          <div class="photo-box">사진 1</div>
-          <div class="photo-box">사진 2</div>
-          <div class="photo-box">사진 3</div>
-          <div class="photo-box">사진 4</div>
-          <div class="photo-box">사진 5</div>
-          <div class="photo-box">사진 6</div>
+          <div class="photo-box" data-edit="photo1">사진 1</div>
+          <div class="photo-box" data-edit="photo2">사진 2</div>
+          <div class="photo-box" data-edit="photo3">사진 3</div>
+          <div class="photo-box" data-edit="photo4">사진 4</div>
+          <div class="photo-box" data-edit="photo5">사진 5</div>
+          <div class="photo-box" data-edit="photo6">사진 6</div>
         </div>
       </div>
     </section>
@@ -313,23 +419,230 @@
     <section id="contact">
       <div class="wrap">
         <h2>연락</h2>
-        <p class="section-intro">
+        <p class="section-intro" data-edit="contactIntro">
           이메일, 구글 스칼라, ORCID, 출판 링크 등을 여기에 넣으면 됩니다.
         </p>
 
         <div class="card">
-          <p>이메일: your-email@example.com</p>
-          <p>Google Scholar: 링크 추가 예정</p>
-          <p>ORCID: 링크 추가 예정</p>
+          <p data-edit="contactEmail">이메일: your-email@example.com</p>
+          <p data-edit="contactScholar">Google Scholar: 링크 추가 예정</p>
+          <p data-edit="contactOrcid">ORCID: 링크 추가 예정</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">
+    <div class="wrap" data-edit="footerText">
       © 2026 Choi Yongho. All rights reserved.
     </div>
   </footer>
+
+  <button id="adminToggle" class="admin-fab">관리자 모드</button>
+
+  <aside id="adminPanel" class="admin-panel">
+    <h3>관리자 모드</h3>
+
+    <div id="loginBox">
+      <label for="adminPassword">비밀번호</label>
+      <input id="adminPassword" type="password" placeholder="비밀번호 입력" />
+      <div class="admin-actions">
+        <button class="btn btn-dark" id="loginBtn">들어가기</button>
+      </div>
+      <div class="small-note">
+        이 비밀번호는 코드 안에 들어가는 간단한 잠금입니다. 강한 보안용은 아닙니다.
+      </div>
+    </div>
+
+    <div id="editorBox" class="hidden">
+      <label for="fieldSelect">수정할 항목</label>
+      <select id="fieldSelect" style="width:100%; padding:12px 14px; border:1px solid #d1d5db; border-radius:12px;">
+      </select>
+
+      <label for="fieldValue">내용</label>
+      <textarea id="fieldValue"></textarea>
+
+      <div class="admin-actions">
+        <button class="btn btn-dark" id="applyBtn">적용</button>
+        <button class="btn btn-light" id="saveBtn">저장</button>
+        <button class="btn btn-light" id="resetBtn">기본값 복원</button>
+        <button class="btn btn-light" id="logoutBtn">종료</button>
+      </div>
+
+      <div class="small-note">
+        저장은 이 브라우저의 localStorage에 됩니다.
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const ADMIN_PASSWORD = "gibran0830!";
+
+    const fieldLabels = {
+      brand: "상단 이름",
+      eyebrow: "첫 줄 작은 소개",
+      heroTitle: "메인 제목",
+      heroText: "메인 설명",
+      aboutText: "소개 본문",
+      aboutCard1Title: "소개 카드 1 제목",
+      aboutCard1Text: "소개 카드 1 내용",
+      aboutCard2Title: "소개 카드 2 제목",
+      aboutCard2Text: "소개 카드 2 내용",
+      aboutCard3Title: "소개 카드 3 제목",
+      aboutCard3Text: "소개 카드 3 내용",
+      papersIntro: "논문 섹션 소개",
+      paper1Title: "논문 1 제목",
+      paper1Meta: "논문 1 메타",
+      paper1Text: "논문 1 설명",
+      paper2Title: "논문 2 제목",
+      paper2Meta: "논문 2 메타",
+      paper2Text: "논문 2 설명",
+      paper3Title: "논문 3 제목",
+      paper3Meta: "논문 3 메타",
+      paper3Text: "논문 3 설명",
+      fictionIntro: "소설 섹션 소개",
+      fiction1Title: "소설 1 제목",
+      fiction1Text: "소설 1 설명",
+      fiction2Title: "소설 2 제목",
+      fiction2Text: "소설 2 설명",
+      fiction3Title: "소설 3 제목",
+      fiction3Text: "소설 3 설명",
+      photosIntro: "사진 섹션 소개",
+      photo1: "사진 1 자리",
+      photo2: "사진 2 자리",
+      photo3: "사진 3 자리",
+      photo4: "사진 4 자리",
+      photo5: "사진 5 자리",
+      photo6: "사진 6 자리",
+      contactIntro: "연락 섹션 소개",
+      contactEmail: "이메일",
+      contactScholar: "Google Scholar",
+      contactOrcid: "ORCID",
+      footerText: "푸터 문구"
+    };
+
+    function getDefaultContent() {
+      const defaults = {};
+      document.querySelectorAll("[data-edit]").forEach(el => {
+        defaults[el.dataset.edit] = el.innerHTML.trim();
+      });
+      return defaults;
+    }
+
+    const defaultContent = getDefaultContent();
+
+    function loadSavedContent() {
+      const saved = JSON.parse(localStorage.getItem("homepageContent") || "{}");
+      Object.entries(saved).forEach(([key, value]) => {
+        const el = document.querySelector(`[data-edit="${key}"]`);
+        if (el) el.innerHTML = value;
+      });
+    }
+
+    function saveCurrentContent() {
+      const current = {};
+      document.querySelectorAll("[data-edit]").forEach(el => {
+        current[el.dataset.edit] = el.innerHTML;
+      });
+      localStorage.setItem("homepageContent", JSON.stringify(current));
+      alert("저장되었습니다.");
+    }
+
+    function resetContent() {
+      Object.entries(defaultContent).forEach(([key, value]) => {
+        const el = document.querySelector(`[data-edit="${key}"]`);
+        if (el) el.innerHTML = value;
+      });
+      localStorage.removeItem("homepageContent");
+      syncFieldValue();
+      alert("기본값으로 복원되었습니다.");
+    }
+
+    const adminToggle = document.getElementById("adminToggle");
+    const adminPanel = document.getElementById("adminPanel");
+    const loginBtn = document.getElementById("loginBtn");
+    const loginBox = document.getElementById("loginBox");
+    const editorBox = document.getElementById("editorBox");
+    const adminBar = document.getElementById("adminBar");
+    const fieldSelect = document.getElementById("fieldSelect");
+    const fieldValue = document.getElementById("fieldValue");
+    const applyBtn = document.getElementById("applyBtn");
+    const saveBtn = document.getElementById("saveBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    function populateFields() {
+      fieldSelect.innerHTML = "";
+      Object.entries(fieldLabels).forEach(([key, label]) => {
+        const option = document.createElement("option");
+        option.value = key;
+        option.textContent = label;
+        fieldSelect.appendChild(option);
+      });
+    }
+
+    function syncFieldValue() {
+      const key = fieldSelect.value;
+      const el = document.querySelector(`[data-edit="${key}"]`);
+      fieldValue.value = el ? el.innerHTML.replace(/<br\s*\/?>/gi, "\n") : "";
+    }
+
+    function applyFieldValue() {
+      const key = fieldSelect.value;
+      const el = document.querySelector(`[data-edit="${key}"]`);
+      if (!el) return;
+      const html = fieldValue.value.replace(/\n/g, "<br>");
+      el.innerHTML = html;
+    }
+
+    function openAdminPanel() {
+      adminPanel.classList.add("open");
+    }
+
+    function closeAdminPanel() {
+      adminPanel.classList.remove("open");
+    }
+
+    function enterAdminMode() {
+      loginBox.classList.add("hidden");
+      editorBox.classList.remove("hidden");
+      document.body.classList.add("editable-on");
+      adminBar.classList.add("show");
+      syncFieldValue();
+    }
+
+    function exitAdminMode() {
+      loginBox.classList.remove("hidden");
+      editorBox.classList.add("hidden");
+      document.body.classList.remove("editable-on");
+      adminBar.classList.remove("show");
+      document.getElementById("adminPassword").value = "";
+      closeAdminPanel();
+    }
+
+    adminToggle.addEventListener("click", openAdminPanel);
+
+    loginBtn.addEventListener("click", () => {
+      const pw = document.getElementById("adminPassword").value;
+      if (pw === ADMIN_PASSWORD) {
+        enterAdminMode();
+      } else {
+        alert("비밀번호가 다릅니다.");
+      }
+    });
+
+    fieldSelect.addEventListener("change", syncFieldValue);
+    applyBtn.addEventListener("click", applyFieldValue);
+    saveBtn.addEventListener("click", () => {
+      applyFieldValue();
+      saveCurrentContent();
+    });
+    resetBtn.addEventListener("click", resetContent);
+    logoutBtn.addEventListener("click", exitAdminMode);
+
+    loadSavedContent();
+    populateFields();
+    syncFieldValue();
+  </script>
 </body>
 </html>
