@@ -47,6 +47,12 @@
       gap: 18px;
       padding: 18px 0;
     }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
     .brand {
       font-size: 18px;
       font-weight: 700;
@@ -58,6 +64,25 @@
       gap: 18px;
       color: var(--muted);
       font-size: 15px;
+    }
+    .lang-toggle {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .lang-btn {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
     }
 
     .hero {
@@ -264,45 +289,58 @@
       h1 { font-size: 40px; }
       .hero { padding: 110px 0 88px; }
       .photo-grid { grid-template-columns: 1fr; }
-      .nav { flex-direction: column; align-items: flex-start; }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
-      <div class="brand">환영합니다</div>
-      <nav class="menu">
-        <a href="#about">소개</a>
-        <a href="#papers">논문</a>
-        <a href="#writing">글쓰기 작업</a>
-        <a href="#photos">사진</a>
-        <a href="#contact">연락</a>
-      </nav>
+      <div class="nav-left">
+        <div class="brand" id="brand">환영합니다</div>
+        <nav class="menu">
+          <a href="#about" id="menu-about">소개</a>
+          <a href="#papers" id="menu-papers">논문</a>
+          <a href="#writing" id="menu-writing">글쓰기 작업</a>
+          <a href="#photos" id="menu-photos">사진</a>
+          <a href="#contact" id="menu-contact">연락</a>
+        </nav>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ko" onclick="setLanguage('ko')">한국어</button>
+        <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="wrap">
-        <div class="eyebrow">Philosophy · Writing · Photography</div>
-        <h1>철학적 사고, 비판적 사고,<br>아름다운 글과 사진을 담았습니다</h1>
-        <p>
+        <div class="eyebrow" id="hero-eyebrow">Philosophy · Writing · Photography</div>
+        <h1 id="hero-title">철학적 사고, 비판적 사고,<br>아름다운 글과 사진을 담았습니다</h1>
+        <p id="hero-text">
           언어, 이해, 인공지능, 삶의 의미를 중심으로 작업을 이어가고 있습니다.
           논문을 쓰고, 비판적 사고 관련 글을 쓰며, 사진으로 장면을 기록합니다.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-dark" href="#papers">논문 보기</a>
-          <a class="btn btn-light" href="#writing">글쓰기 보기</a>
-          <a class="btn btn-light" href="#photos">사진 보기</a>
+          <a class="btn btn-dark" href="#papers" id="hero-btn-papers">논문 보기</a>
+          <a class="btn btn-light" href="#writing" id="hero-btn-writing">글쓰기 보기</a>
+          <a class="btn btn-light" href="#photos" id="hero-btn-photos">사진 보기</a>
         </div>
       </div>
     </section>
 
     <section id="about">
       <div class="wrap">
-        <h2>소개</h2>
-        <p class="section-intro">
+        <h2 id="about-title">소개</h2>
+        <p class="section-intro" id="about-text">
           저는 서양 영미철학을 전공한 한국 토종 철학자입니다. 전북대학교 철학과에서 학사, 석사, 박사과정을 모두 마치고, 현재 전북대학교와 군산대학교에서 비판적사고, 언어철학, 인식론 등을 가르치고 있습니다. 저의 메세지가 여러분의 삶에 조금이라도 도움이 되기를 희망합니다. 감사합니다.
         </p>
       </div>
@@ -310,30 +348,30 @@
 
     <section id="papers" class="alt">
       <div class="wrap">
-        <h2>논문</h2>
-        <p class="section-intro">
+        <h2 id="papers-title">논문</h2>
+        <p class="section-intro" id="papers-intro">
           대표 논문과 주요 작업을 정리했습니다.
         </p>
         <div class="item-grid">
           <article class="item-card">
             <div class="item-title">Linguistic Understanding Beyond Knowledge, Ability, and Process: A Multi-Layered and Multi-Axial Model</div>
             <div class="item-meta">Philosophy &amp; Technology</div>
-            <div class="item-desc">인공지능 시대에 언어적 이해의 조건을 제시한 작업입니다.</div>
-            <a class="item-link" href="https://www.doi.org/10.1007/s13347-026-01047-y" target="_blank" rel="noopener noreferrer">논문 보기</a>
+            <div class="item-desc" id="paper1-desc">인공지능 시대에 언어적 이해의 조건을 제시한 작업입니다.</div>
+            <a class="item-link" href="https://www.doi.org/10.1007/s13347-026-01047-y" target="_blank" rel="noopener noreferrer" id="paper1-link">논문 보기</a>
           </article>
 
           <article class="item-card">
             <div class="item-title">Blindness as Evidence Policy and Vow</div>
-            <div class="item-meta">논문 프로젝트</div>
-            <div class="item-desc">맹목성이 언제나 인식적 결함은 아니며 때로는 공정성·신뢰·헌신을 지키기 위한 정당한 증거 정책이나 서약이 될 수 있지만, 동시에 지배·독단·제도적 남용을 가리는 위험한 장치가 될 수도 있음을 논한 작업입니다.</div>
-            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
+            <div class="item-meta" id="paper2-meta">논문 프로젝트</div>
+            <div class="item-desc" id="paper2-desc">맹목성이 언제나 인식적 결함은 아니며 때로는 공정성·신뢰·헌신을 지키기 위한 정당한 증거 정책이나 서약이 될 수 있지만, 동시에 지배·독단·제도적 남용을 가리는 위험한 장치가 될 수도 있음을 논한 작업입니다.</div>
+            <a class="item-link" href="#" onclick="return false;" id="paper2-link">링크 추가 예정</a>
           </article>
 
           <article class="item-card">
             <div class="item-title">비판적 사고 교육의 소재 - 레 미제라블</div>
-            <div class="item-meta">논문</div>
-            <div class="item-desc">비판적 사고 교육에 빅토르 위고의 &lt;레 미제라블&gt;을 소재로 활용할 수 있음을 보인 작업입니다.</div>
-            <a class="item-link" href="https://j-kagedu.or.kr/upload/pdf/kjge-2022-16-4-11.pdf" target="_blank" rel="noopener noreferrer">논문 보기</a>
+            <div class="item-meta" id="paper3-meta">논문</div>
+            <div class="item-desc" id="paper3-desc">비판적 사고 교육에 빅토르 위고의 &lt;레 미제라블&gt;을 소재로 활용할 수 있음을 보인 작업입니다.</div>
+            <a class="item-link" href="https://j-kagedu.or.kr/upload/pdf/kjge-2022-16-4-11.pdf" target="_blank" rel="noopener noreferrer" id="paper3-link">논문 보기</a>
           </article>
         </div>
       </div>
@@ -341,30 +379,30 @@
 
     <section id="writing">
       <div class="wrap">
-        <h2>글쓰기 작업</h2>
-        <p class="section-intro">
+        <h2 id="writing-title">글쓰기 작업</h2>
+        <p class="section-intro" id="writing-intro">
           별도 읽기 페이지에서 편하게 읽도록 구성했습니다.
         </p>
         <div class="item-grid">
           <article class="item-card">
-            <div class="item-title">정답이 먼저 돈다</div>
-            <div class="item-meta">단편</div>
-            <div class="item-desc">내가 근거 없는 소문의 전파자가 될 수 있다는 내용의 소설입니다.</div>
-            <a class="item-link" href="stories/story-1.html">작품 읽기</a>
+            <div class="item-title" id="writing1-title">정답이 먼저 돈다</div>
+            <div class="item-meta" id="writing1-meta">단편</div>
+            <div class="item-desc" id="writing1-desc">내가 근거 없는 소문의 전파자가 될 수 있다는 내용의 소설입니다.</div>
+            <a class="item-link" href="stories/story-1.html" id="writing1-link">작품 읽기</a>
           </article>
 
           <article class="item-card">
-            <div class="item-title">보편적 일반화와 통계적 일반화</div>
-            <div class="item-meta">글</div>
-            <div class="item-desc">우리가 늘 하던 생각이 편견과 고정관점으로 이어질 수 있음을 역사적 사례를 들어 설명한 글입니다.</div>
-            <a class="item-link" href="stories/story-2.html">작품 읽기</a>
+            <div class="item-title" id="writing2-title">보편적 일반화와 통계적 일반화</div>
+            <div class="item-meta" id="writing2-meta">글</div>
+            <div class="item-desc" id="writing2-desc">우리가 늘 하던 생각이 편견과 고정관점으로 이어질 수 있음을 역사적 사례를 들어 설명한 글입니다.</div>
+            <a class="item-link" href="stories/story-2.html" id="writing2-link">작품 읽기</a>
           </article>
 
           <article class="item-card">
-            <div class="item-title">비판적 사고</div>
-            <div class="item-meta">책 프로젝트</div>
-            <div class="item-desc">스스로 판단하는 법을 다룬 글입니다.</div>
-            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
+            <div class="item-title" id="writing3-title">비판적 사고</div>
+            <div class="item-meta" id="writing3-meta">책 프로젝트</div>
+            <div class="item-desc" id="writing3-desc">스스로 판단하는 법을 다룬 글입니다.</div>
+            <a class="item-link" href="#" onclick="return false;" id="writing3-link">링크 추가 예정</a>
           </article>
         </div>
       </div>
@@ -372,7 +410,7 @@
 
     <section id="photos" class="alt">
       <div class="wrap">
-        <h2>사진</h2>
+        <h2 id="photos-title">사진</h2>
         <div class="photo-grid">
           <div class="photo-card">
             <img src="images/photo-1.jpeg" alt="대표 사진 1" onclick="openPhotoModal(this.src, this.alt)" />
@@ -392,10 +430,10 @@
 
     <section id="contact">
       <div class="wrap">
-        <h2>연락</h2>
+        <h2 id="contact-title">연락</h2>
         <div class="contact-box">
-          <p>e-Mail: <a href="mailto:yonghochoi0909@gmail.com">yonghochoi0909@gmail.com</a></p>
-          <p>Google Scholar: <a href="https://scholar.google.com/citations?user=_nx73p0AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">프로필 보기</a></p>
+          <p><span id="contact-email-label">e-Mail</span>: <a href="mailto:yonghochoi0909@gmail.com">yonghochoi0909@gmail.com</a></p>
+          <p><span id="contact-scholar-label">Google Scholar</span>: <a href="https://scholar.google.com/citations?user=_nx73p0AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer" id="contact-scholar-link">프로필 보기</a></p>
           <p>ORCID: <a href="https://orcid.org/0000-0001-7343-6970" target="_blank" rel="noopener noreferrer">0000-0001-7343-6970</a></p>
         </div>
       </div>
@@ -429,6 +467,169 @@
         closePhotoModal();
       }
     });
+
+    const translations = {
+      ko: {
+        htmlLang: "ko",
+        title: "환영합니다 | 철학, 글쓰기 작업, 사진",
+        description: "철학적 사고, 비판적 사고, 아름다운 글과 사진을 담았습니다.",
+        brand: "환영합니다",
+        menuAbout: "소개",
+        menuPapers: "논문",
+        menuWriting: "글쓰기 작업",
+        menuPhotos: "사진",
+        menuContact: "연락",
+        heroEyebrow: "Philosophy · Writing · Photography",
+        heroTitle: "철학적 사고, 비판적 사고,<br>아름다운 글과 사진을 담았습니다",
+        heroText: "언어, 이해, 인공지능, 삶의 의미를 중심으로 작업을 이어가고 있습니다.<br>논문을 쓰고, 비판적 사고 관련 글을 쓰며, 사진으로 장면을 기록합니다.",
+        heroBtnPapers: "논문 보기",
+        heroBtnWriting: "글쓰기 보기",
+        heroBtnPhotos: "사진 보기",
+        aboutTitle: "소개",
+        aboutText: "저는 서양 영미철학을 전공한 한국 토종 철학자입니다. 전북대학교 철학과에서 학사, 석사, 박사과정을 모두 마치고, 현재 전북대학교와 군산대학교에서 비판적사고, 언어철학, 인식론 등을 가르치고 있습니다. 저의 메세지가 여러분의 삶에 조금이라도 도움이 되기를 희망합니다. 감사합니다.",
+        papersTitle: "논문",
+        papersIntro: "대표 논문과 주요 작업을 정리했습니다.",
+        paper1Desc: "인공지능 시대에 언어적 이해의 조건을 제시한 작업입니다.",
+        paper1Link: "논문 보기",
+        paper2Meta: "논문 프로젝트",
+        paper2Desc: "맹목성이 언제나 인식적 결함은 아니며 때로는 공정성·신뢰·헌신을 지키기 위한 정당한 증거 정책이나 서약이 될 수 있지만, 동시에 지배·독단·제도적 남용을 가리는 위험한 장치가 될 수도 있음을 논한 작업입니다.",
+        paper2Link: "링크 추가 예정",
+        paper3Meta: "논문",
+        paper3Desc: "비판적 사고 교육에 빅토르 위고의 <레 미제라블>을 소재로 활용할 수 있음을 보인 작업입니다.",
+        paper3Link: "논문 보기",
+        writingTitle: "글쓰기 작업",
+        writingIntro: "별도 읽기 페이지에서 편하게 읽도록 구성했습니다.",
+        writing1Title: "정답이 먼저 돈다",
+        writing1Meta: "단편",
+        writing1Desc: "내가 근거 없는 소문의 전파자가 될 수 있다는 내용의 소설입니다.",
+        writing1Link: "작품 읽기",
+        writing2Title: "보편적 일반화와 통계적 일반화",
+        writing2Meta: "글",
+        writing2Desc: "우리가 늘 하던 생각이 편견과 고정관점으로 이어질 수 있음을 역사적 사례를 들어 설명한 글입니다.",
+        writing2Link: "작품 읽기",
+        writing3Title: "비판적 사고",
+        writing3Meta: "책 프로젝트",
+        writing3Desc: "스스로 판단하는 법을 다룬 글입니다.",
+        writing3Link: "링크 추가 예정",
+        photosTitle: "사진",
+        contactTitle: "연락",
+        contactEmailLabel: "e-Mail",
+        contactScholarLabel: "Google Scholar",
+        contactScholarLink: "프로필 보기"
+      },
+      en: {
+        htmlLang: "en",
+        title: "Welcome | Philosophy, Writing, Photography",
+        description: "A place for philosophical reflection, critical thinking, beautiful writing, and photography.",
+        brand: "Welcome",
+        menuAbout: "About",
+        menuPapers: "Papers",
+        menuWriting: "Writing",
+        menuPhotos: "Photos",
+        menuContact: "Contact",
+        heroEyebrow: "Philosophy · Writing · Photography",
+        heroTitle: "Philosophical reflection, critical thinking,<br>beautiful writing, and photography",
+        heroText: "My work centers on language, understanding, artificial intelligence, and the meaning of life.<br>I write academic papers, essays on critical thinking, and record moments through photography.",
+        heroBtnPapers: "View Papers",
+        heroBtnWriting: "View Writing",
+        heroBtnPhotos: "View Photos",
+        aboutTitle: "About",
+        aboutText: "I am a Korean philosopher trained in Anglo-American philosophy. I completed my BA, MA, and PhD in the Department of Philosophy at Jeonbuk National University, and I currently teach critical thinking, philosophy of language, and epistemology at Jeonbuk National University and Kunsan National University. I hope that my message may be of some help in your life. Thank you.",
+        papersTitle: "Papers",
+        papersIntro: "Selected papers and current projects.",
+        paper1Desc: "A work that proposes the conditions for linguistic understanding in the age of artificial intelligence.",
+        paper1Link: "Read Paper",
+        paper2Meta: "Paper Project",
+        paper2Desc: "This work argues that blindness is not always an epistemic defect. It can sometimes function as a justified evidence policy or vow that protects fairness, trust, and commitment, while also carrying the danger of concealing domination, dogmatism, and institutional abuse.",
+        paper2Link: "Link Coming Soon",
+        paper3Meta: "Paper",
+        paper3Desc: "A work showing how Victor Hugo's Les Misérables can be used as material for teaching critical thinking.",
+        paper3Link: "Read Paper",
+        writingTitle: "Writing",
+        writingIntro: "These pieces are designed to be read comfortably on separate pages.",
+        writing1Title: "The Answer Spreads First",
+        writing1Meta: "Short Fiction",
+        writing1Desc: "A story about how one can become a transmitter of baseless rumors.",
+        writing1Link: "Read",
+        writing2Title: "Universal Generalization and Statistical Generalization",
+        writing2Meta: "Essay",
+        writing2Desc: "A piece explaining, with historical examples, how familiar habits of thought can lead to prejudice and fixed perspectives.",
+        writing2Link: "Read",
+        writing3Title: "Critical Thinking",
+        writing3Meta: "Book Project",
+        writing3Desc: "A writing project about how to judge for oneself.",
+        writing3Link: "Link Coming Soon",
+        photosTitle: "Photos",
+        contactTitle: "Contact",
+        contactEmailLabel: "e-Mail",
+        contactScholarLabel: "Google Scholar",
+        contactScholarLink: "View Profile"
+      }
+    };
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', t.description);
+
+      document.getElementById("brand").textContent = t.brand;
+      document.getElementById("menu-about").textContent = t.menuAbout;
+      document.getElementById("menu-papers").textContent = t.menuPapers;
+      document.getElementById("menu-writing").textContent = t.menuWriting;
+      document.getElementById("menu-photos").textContent = t.menuPhotos;
+      document.getElementById("menu-contact").textContent = t.menuContact;
+
+      document.getElementById("hero-eyebrow").textContent = t.heroEyebrow;
+      document.getElementById("hero-title").innerHTML = t.heroTitle;
+      document.getElementById("hero-text").innerHTML = t.heroText;
+      document.getElementById("hero-btn-papers").textContent = t.heroBtnPapers;
+      document.getElementById("hero-btn-writing").textContent = t.heroBtnWriting;
+      document.getElementById("hero-btn-photos").textContent = t.heroBtnPhotos;
+
+      document.getElementById("about-title").textContent = t.aboutTitle;
+      document.getElementById("about-text").textContent = t.aboutText;
+
+      document.getElementById("papers-title").textContent = t.papersTitle;
+      document.getElementById("papers-intro").textContent = t.papersIntro;
+      document.getElementById("paper1-desc").textContent = t.paper1Desc;
+      document.getElementById("paper1-link").textContent = t.paper1Link;
+      document.getElementById("paper2-meta").textContent = t.paper2Meta;
+      document.getElementById("paper2-desc").textContent = t.paper2Desc;
+      document.getElementById("paper2-link").textContent = t.paper2Link;
+      document.getElementById("paper3-meta").textContent = t.paper3Meta;
+      document.getElementById("paper3-desc").innerHTML = t.paper3Desc.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace("&lt;레 미제라블&gt;", "&lt;레 미제라블&gt;");
+      document.getElementById("paper3-link").textContent = t.paper3Link;
+
+      document.getElementById("writing-title").textContent = t.writingTitle;
+      document.getElementById("writing-intro").textContent = t.writingIntro;
+      document.getElementById("writing1-title").textContent = t.writing1Title;
+      document.getElementById("writing1-meta").textContent = t.writing1Meta;
+      document.getElementById("writing1-desc").textContent = t.writing1Desc;
+      document.getElementById("writing1-link").textContent = t.writing1Link;
+      document.getElementById("writing2-title").textContent = t.writing2Title;
+      document.getElementById("writing2-meta").textContent = t.writing2Meta;
+      document.getElementById("writing2-desc").textContent = t.writing2Desc;
+      document.getElementById("writing2-link").textContent = t.writing2Link;
+      document.getElementById("writing3-title").textContent = t.writing3Title;
+      document.getElementById("writing3-meta").textContent = t.writing3Meta;
+      document.getElementById("writing3-desc").textContent = t.writing3Desc;
+      document.getElementById("writing3-link").textContent = t.writing3Link;
+
+      document.getElementById("photos-title").textContent = t.photosTitle;
+      document.getElementById("contact-title").textContent = t.contactTitle;
+      document.getElementById("contact-email-label").textContent = t.contactEmailLabel;
+      document.getElementById("contact-scholar-label").textContent = t.contactScholarLabel;
+      document.getElementById("contact-scholar-link").textContent = t.contactScholarLink;
+
+      document.getElementById("btn-ko").classList.toggle("active", lang === "ko");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+      localStorage.setItem("site-language", lang);
+    }
+
+    const savedLang = localStorage.getItem("site-language") || "ko";
+    setLanguage(savedLang);
   </script>
 </body>
 </html>
