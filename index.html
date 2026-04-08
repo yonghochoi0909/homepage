@@ -57,29 +57,41 @@
       color: var(--muted);
       font-size: 15px;
     }
+
     .hero {
-      padding: 96px 0 76px;
-      background: var(--bg);
+      position: relative;
+      padding: 140px 0 120px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.38)),
+        url("images/hero-background.jpeg") center center / cover no-repeat;
+    }
+    .hero .wrap {
+      position: relative;
+      z-index: 1;
     }
     .eyebrow {
       display: inline-block;
       padding: 7px 12px;
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(255, 255, 255, 0.45);
       border-radius: 999px;
-      background: white;
-      color: var(--muted);
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
       font-size: 13px;
+      backdrop-filter: blur(6px);
     }
     h1 {
       margin: 20px 0 18px;
       font-size: 54px;
       line-height: 1.12;
       letter-spacing: -0.04em;
+      color: white;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.18);
     }
     .hero p {
       max-width: 900px;
       font-size: 19px;
-      color: var(--muted);
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.12);
     }
     .hero-actions {
       margin-top: 28px;
@@ -99,13 +111,16 @@
       background: white;
     }
     .btn-dark {
-      background: var(--accent);
+      background: rgba(15, 23, 42, 0.88);
       color: white;
     }
     .btn-light {
-      border-color: #d1d5db;
-      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.6);
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
     }
+
     section {
       padding: 72px 0;
       border-top: 1px solid var(--line);
@@ -225,6 +240,7 @@
     }
     @media (max-width: 860px) {
       h1 { font-size: 40px; }
+      .hero { padding: 110px 0 88px; }
       .grid-3, .photo-grid { grid-template-columns: 1fr; }
       .nav { flex-direction: column; align-items: flex-start; }
     }
@@ -235,8 +251,9 @@
     <div class="wrap nav">
       <div class="brand">환영합니다</div>
       <nav class="menu">
-        <a href="#papers">최용호의 논문</a>
-        <a href="#writing">글들</a>
+        <a href="#about">소개</a>
+        <a href="#papers">논문</a>
+        <a href="#writing">글쓰기 작업</a>
         <a href="#photos">사진</a>
         <a href="#contact">연락</a>
       </nav>
@@ -250,12 +267,35 @@
         <h1>철학적 사고, 비판적 사고,<br>아름다운 글과 사진을 담았습니다</h1>
         <p>
           언어, 이해, 인공지능, 삶의 의미를 중심으로 작업을 이어가고 있습니다.
-          논문을 쓰고, 비판적 사고 글을 쓰며, 사진으로 장면을 기록합니다.
+          논문을 쓰고, 비판적 사고 관련 글을 쓰며, 사진으로 장면을 기록합니다.
         </p>
         <div class="hero-actions">
           <a class="btn btn-dark" href="#papers">논문 보기</a>
           <a class="btn btn-light" href="#writing">글쓰기 보기</a>
           <a class="btn btn-light" href="#photos">사진 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <h2>소개</h2>
+        <p class="section-intro">
+          이곳에는 대표 논문, 글쓰기 작업, 그리고 최소한의 사진 기록을 정리합니다.
+        </p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>연구</h3>
+            <p>철학 논문, 발표문, 문제의식과 주제를 간결하게 소개합니다.</p>
+          </div>
+          <div class="card">
+            <h3>글쓰기</h3>
+            <p>작품 제목과 짧은 소개를 먼저 보여주고, 본문은 별도 읽기 페이지에서 편하게 읽도록 구성합니다.</p>
+          </div>
+          <div class="card">
+            <h3>짧은 글과 사진</h3>
+            <p>과도하지 않은 수의 사진만 골라 분위기와 기록을 보여줍니다.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -299,16 +339,16 @@
         </p>
         <div class="item-grid">
           <article class="item-card">
-            <div class="item-title">정답이 먼저 돈다</div>
+            <div class="item-title">작품 제목 1</div>
             <div class="item-meta">단편</div>
-            <div class="item-desc">내가 근거 없는 소문의 유통 경로가 될 수 있음을 경각시키는 글입니다.</div>
+            <div class="item-desc">5페이지 안팎의 짧은 글을 읽을 수 있습니다.</div>
             <a class="item-link" href="stories/story-1.html">작품 읽기</a>
           </article>
 
           <article class="item-card">
-            <div class="item-title">보편적 일반화와 통계적 일반화</div>
+            <div class="item-title">작품 제목 2</div>
             <div class="item-meta">단편</div>
-            <div class="item-desc">법칙적 사고 및 통계적 사고의 유용성과 위험성을 다룬 글입니다 </div>
+            <div class="item-desc">5페이지 안팎의 짧은 글을 읽을 수 있습니다.</div>
             <a class="item-link" href="stories/story-2.html">작품 읽기</a>
           </article>
 
@@ -326,24 +366,24 @@
       <div class="wrap">
         <h2>사진</h2>
         <p class="section-intro">
-          좋아하는 글귀와 사진을 담았습니다.
+          사진은 최소한으로 두고, 사이트 전체 분위기를 해치지 않는 선에서 대표 이미지 몇 장만 올리는 구성을 권합니다.
         </p>
         <div class="photo-grid">
           <div class="photo-card">
             <img src="images/photo-1.jpeg" alt="대표 사진 1" />
-            <div class="photo-caption">호기심과 배움</div>
+            <div class="photo-caption">대표 사진 1</div>
           </div>
           <div class="photo-card">
             <img src="images/photo-2.jpeg" alt="대표 사진 2" />
-            <div class="photo-caption">사람에 대한 사랑</div>
+            <div class="photo-caption">대표 사진 2</div>
           </div>
           <div class="photo-card">
             <img src="images/photo-3.jpeg" alt="대표 사진 3" />
-            <div class="photo-caption">사랑의 힘</div>
+            <div class="photo-caption">대표 사진 3</div>
           </div>
           <div class="photo-card">
             <img src="images/photo-4.jpeg" alt="대표 사진 4" />
-            <div class="photo-caption">상상을 현실로</div>
+            <div class="photo-caption">대표 사진 4</div>
           </div>
         </div>
       </div>
