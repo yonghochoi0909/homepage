@@ -3,393 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>최용호 | 철학, 소설, 사진</title>
-  <meta name="description" content="최용호의 철학 논문, 소설, 사진을 한곳에 정리한 개인 홈페이지." />
+  <title>작품 제목 2 | 환영합니다</title>
+  <meta name="description" content="작품 제목 2 본문" />
   <style>
     * { box-sizing: border-box; }
-    :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #4b5563;
-      --line: #e5e7eb;
-      --accent: #111827;
-    }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
+      background: #f8fafc;
+      color: #111827;
+      line-height: 1.9;
     }
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
     .wrap {
-      max-width: 1120px;
+      max-width: 820px;
       margin: 0 auto;
       padding: 0 24px;
     }
     header {
+      padding: 28px 0;
+      border-bottom: 1px solid #e5e7eb;
+      background: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(248, 250, 252, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
     }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      padding: 18px 0;
+    .back-link {
+      display: inline-flex;
+      font-size: 14px;
+      color: #4b5563;
+      border-bottom: 1px solid #cbd5e1;
     }
-    .brand {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .menu {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .hero {
-      padding: 96px 0 76px;
-      background: var(--bg);
-    }
-    .eyebrow {
-      display: inline-block;
-      padding: 7px 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 999px;
-      background: white;
-      color: var(--muted);
-      font-size: 13px;
+    main {
+      padding: 56px 0 72px;
     }
     h1 {
-      margin: 20px 0 18px;
-      font-size: 54px;
-      line-height: 1.12;
-      letter-spacing: -0.04em;
-    }
-    .hero p {
-      max-width: 780px;
-      font-size: 19px;
-      color: var(--muted);
-    }
-    .hero-actions {
-      margin-top: 28px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      border: 1px solid transparent;
-      border-radius: 16px;
-      padding: 13px 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-weight: 600;
-      background: white;
-    }
-    .btn-dark {
-      background: var(--accent);
-      color: white;
-    }
-    .btn-light {
-      border-color: #d1d5db;
-      color: var(--text);
-    }
-    section {
-      padding: 72px 0;
-      border-top: 1px solid var(--line);
-      background: white;
-    }
-    section.alt {
-      background: var(--bg);
-    }
-    h2 {
-      margin: 0 0 18px;
-      font-size: 32px;
+      margin: 0 0 12px;
+      font-size: 42px;
       line-height: 1.2;
       letter-spacing: -0.03em;
     }
-    .section-intro {
-      max-width: 780px;
-      color: var(--muted);
-      margin-bottom: 28px;
+    .meta {
+      color: #6b7280;
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .story {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      white-space: pre-line;
       font-size: 17px;
     }
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 21px;
-      letter-spacing: -0.02em;
-    }
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .item-grid {
-      display: grid;
-      gap: 16px;
-    }
-    .item-card {
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 20px;
-      background: white;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-    .item-title {
-      font-size: 19px;
-      margin-bottom: 6px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .item-meta {
-      font-size: 14px;
-      color: #6b7280;
-      margin-bottom: 8px;
-    }
-    .item-desc {
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .item-link {
-      margin-top: 14px;
-      display: inline-flex;
-      font-size: 14px;
-      color: var(--text);
-      border-bottom: 1px solid #cbd5e1;
-    }
-    .photo-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-    .photo-card {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: white;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-    .photo-card img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
-    }
-    .photo-caption {
-      padding: 12px 14px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .contact-box {
-      max-width: 760px;
-    }
-    .contact-box p {
-      margin: 8px 0;
-      color: var(--muted);
-    }
-    footer {
-      padding: 48px 0 72px;
-      color: #6b7280;
-      font-size: 14px;
-      background: var(--bg);
-      border-top: 1px solid var(--line);
-    }
-    @media (max-width: 980px) {
-      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
     @media (max-width: 860px) {
-      h1 { font-size: 40px; }
-      .grid-3, .photo-grid { grid-template-columns: 1fr; }
-      .nav { flex-direction: column; align-items: flex-start; }
+      h1 { font-size: 32px; }
+      .story { padding: 22px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap nav">
-      <div class="brand">최용호</div>
-      <nav class="menu">
-        <a href="#about">소개</a>
-        <a href="#papers">논문</a>
-        <a href="#fiction">소설</a>
-        <a href="#photos">사진</a>
-        <a href="#contact">연락</a>
-      </nav>
+    <div class="wrap">
+      <a class="back-link" href="../index.html">홈으로 돌아가기</a>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Philosophy · Fiction · Photography</div>
-        <h1>철학, 소설, 사진을<br>한곳에 정리합니다</h1>
-        <p>
-          언어, 이해, 인공지능, 삶의 의미를 중심으로 철학 작업을 이어가고 있습니다.
-          논문을 쓰고, 소설을 쓰며, 사진으로 장면을 기록합니다.
-          이 홈페이지는 그 작업들을 간결하게 보여주기 위한 개인 아카이브입니다.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-dark" href="#papers">논문 보기</a>
-          <a class="btn btn-light" href="#fiction">소설 보기</a>
-          <a class="btn btn-light" href="#photos">사진 보기</a>
-        </div>
+    <div class="wrap">
+      <h1>작품 제목 2</h1>
+      <div class="meta">단편소설</div>
+
+      <div class="story">
+여기에 두 번째 소설 본문을 붙여 넣으세요.
+
+이 페이지도 같은 방식으로 길게 읽히도록 구성했습니다.
       </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap">
-        <h2>소개</h2>
-        <p class="section-intro">
-          이곳에는 대표 논문, 진행 중인 글쓰기 작업, 그리고 최소한의 사진 기록을 정리합니다.
-          복잡한 장식보다 읽기 쉬운 구조와 분명한 분류를 우선했습니다.
-          방문자는 짧은 시간 안에 무엇을 연구하고 쓰고 기록하는지 파악할 수 있습니다.
-        </p>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>연구</h3>
-            <p>철학 논문, 발표문, 문제의식과 주제를 간결하게 소개합니다.</p>
-          </div>
-          <div class="card">
-            <h3>소설</h3>
-            <p>대표 작품과 진행 중인 작업을 짧은 소개와 함께 정리합니다.</p>
-          </div>
-          <div class="card">
-            <h3>사진</h3>
-            <p>과도하지 않은 수의 사진만 골라 분위기와 기록을 보여줍니다.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="papers" class="alt">
-      <div class="wrap">
-        <h2>논문</h2>
-        <p class="section-intro">
-          대표 논문과 주요 작업을 정리했습니다.
-        </p>
-        <div class="item-grid">
-          <article class="item-card">
-            <div class="item-title">Linguistic Understanding Beyond Knowledge, Ability, and Process: A Multi-Layered and Multi-Axial Model</div>
-            <div class="item-meta">Philosophy &amp; Technology</div>
-            <div class="item-desc">인공지능 시대에 언어적 이해의 조건을 제시한 작업입니다.</div>
-            <a class="item-link" href="https://www.doi.org/10.1007/s13347-026-01047-y" target="_blank" rel="noopener noreferrer">논문 보기</a>
-          </article>
-
-          <article class="item-card">
-            <div class="item-title">Blindness as Evidence Policy and Vow</div>
-            <div class="item-meta">논문 프로젝트</div>
-            <div class="item-desc">맹목성이 언제나 인식적 결함은 아니며 때로는 공정성·신뢰·헌신을 지키기 위한 정당한 증거 정책이나 서약이 될 수 있지만, 동시에 지배·독단·제도적 남용을 가리는 위험한 장치가 될 수도 있음을 논한 작업입니다.</div>
-            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
-          </article>
-
-          <article class="item-card">
-            <div class="item-title">비판적 사고 교육의 소재 - 레 미제라블</div>
-            <div class="item-meta">논문</div>
-            <div class="item-desc">비판적 사고 교육에 빅토르 위고의 &lt;레 미제라블&gt;을 소재로 활용할 수 있음을 보인 작업입니다.</div>
-            <a class="item-link" href="https://j-kagedu.or.kr/upload/pdf/kjge-2022-16-4-11.pdf" target="_blank" rel="noopener noreferrer">논문 보기</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="fiction">
-      <div class="wrap">
-        <h2>소설</h2>
-        <p class="section-intro">
-          대표 작품과 시리즈를 간결하게 소개하는 구조입니다. 출간 링크나 읽기 링크가 생기면 바로 연결하면 됩니다.
-        </p>
-        <div class="item-grid">
-          <article class="item-card">
-            <div class="item-title">AI가 답해도, 결정은 내가 한다: 후회 줄이는 생각법</div>
-            <div class="item-meta">책 프로젝트</div>
-            <div class="item-desc">AI의 답을 그대로 따르지 않고 스스로 판단하는 법을 다루는 작업입니다.</div>
-            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
-          </article>
-
-          <article class="item-card">
-            <div class="item-title">청소년 소설 작업</div>
-            <div class="item-meta">진행 중</div>
-            <div class="item-desc">청소년 독자를 위한 이야기 작업을 정리하는 자리입니다.</div>
-            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
-          </article>
-
-          <article class="item-card">
-            <div class="item-title">시리즈 및 단편 모음</div>
-            <div class="item-meta">아카이브</div>
-            <div class="item-desc">장편, 단편, 시리즈 작업을 구분해 정리할 수 있는 자리입니다.</div>
-            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="photos" class="alt">
-      <div class="wrap">
-        <h2>사진</h2>
-        <p class="section-intro">
-          사진은 최소한으로 두고, 사이트 전체 분위기를 해치지 않는 선에서 대표 이미지 몇 장만 올리는 구성을 권합니다.
-        </p>
-        <div class="photo-grid">
-          <div class="photo-card">
-            <img src="images/photo-1.jpeg" alt="대표 사진 1" />
-            <div class="photo-caption">대표 사진 1</div>
-          </div>
-          <div class="photo-card">
-            <img src="images/photo-2.jpeg" alt="대표 사진 2" />
-            <div class="photo-caption">대표 사진 2</div>
-          </div>
-          <div class="photo-card">
-            <img src="images/photo-3.jpeg" alt="대표 사진 3" />
-            <div class="photo-caption">대표 사진 3</div>
-          </div>
-          <div class="photo-card">
-            <img src="images/photo-4.jpeg" alt="대표 사진 4" />
-            <div class="photo-caption">대표 사진 4</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <h2>연락</h2>
-        <div class="contact-box card">
-          <p>e-Mail: <a href="mailto:yonghochoi0909@gmail.com">yonghochoi0909@gmail.com</a></p>
-          <p>Google Scholar: <a href="https://scholar.google.com/citations?user=_nx73p0AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">프로필 보기</a></p>
-          <p>ORCID: <a href="https://orcid.org/0000-0001-7343-6970" target="_blank" rel="noopener noreferrer">0000-0001-7343-6970</a></p>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
-
-  <footer>
-    <div class="wrap">© 2026 Choi Yongho. All rights reserved.</div>
-  </footer>
 </body>
 </html>
