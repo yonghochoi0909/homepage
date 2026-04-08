@@ -25,11 +25,13 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+
     .wrap {
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 24px;
     }
+
     header {
       position: sticky;
       top: 0;
@@ -141,30 +143,7 @@
       margin-bottom: 28px;
       font-size: 17px;
     }
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 21px;
-      letter-spacing: -0.02em;
-    }
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+
     .item-grid {
       display: grid;
       gap: 16px;
@@ -198,6 +177,7 @@
       color: var(--text);
       border-bottom: 1px solid #cbd5e1;
     }
+
     .photo-grid {
       display: grid;
       gap: 16px;
@@ -215,19 +195,26 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
       background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
-    .photo-caption {
-      padding: 12px 14px;
-      font-size: 14px;
-      color: var(--muted);
+    .photo-card img:hover {
+      transform: scale(1.02);
     }
+
     .contact-box {
       max-width: 760px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
     }
     .contact-box p {
       margin: 8px 0;
       color: var(--muted);
     }
+
     footer {
       padding: 48px 0 72px;
       color: #6b7280;
@@ -235,13 +222,48 @@
       background: var(--bg);
       border-top: 1px solid var(--line);
     }
+
+    .photo-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.88);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .photo-modal.open {
+      display: flex;
+    }
+    .photo-modal img {
+      max-width: 92vw;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    }
+    .photo-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: white;
+      font-size: 40px;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+    }
+
     @media (max-width: 980px) {
-      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
     @media (max-width: 860px) {
       h1 { font-size: 40px; }
       .hero { padding: 110px 0 88px; }
-      .grid-3, .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
       .nav { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -267,8 +289,7 @@
         <h1>철학적 사고, 비판적 사고,<br>아름다운 글과 사진을 담았습니다</h1>
         <p>
           언어, 이해, 인공지능, 삶의 의미를 중심으로 작업을 이어가고 있습니다.
-          학술 논문과 비판적 사고 관련 글을 쓰며, 소중한 장면을 사진으로 기록합니다.
-          지금 보고계신 배경화면은 신시도자연휴양림에서 바라본 군산의 선유도 노을입니다.
+          논문을 쓰고, 비판적 사고 관련 글을 쓰며, 사진으로 장면을 기록합니다.
         </p>
         <div class="hero-actions">
           <a class="btn btn-dark" href="#papers">논문 보기</a>
@@ -279,13 +300,13 @@
     </section>
 
     <section id="about">
-  <div class="wrap">
-    <h2>소개</h2>
-    <p class="section-intro">
-      저는 서양 영미철학을 전공한 한국 토종 철학자입니다. 전북대학교 철학과에서 학사, 석사, 박사과정을 모두 마치고, 현재 전북대학교와 군산대학교에서 비판적사고, 언어철학, 인식론 등을 가르치고 있습니다. 저의 메세지가 여러분의 삶에 조금이라도 도움이 되기를 희망합니다. 감사합니다.
-    </p>
-  </div>
-</section>
+      <div class="wrap">
+        <h2>소개</h2>
+        <p class="section-intro">
+          저는 서양 영미철학을 전공한 한국 토종 철학자입니다. 전북대학교 철학과에서 학사, 석사, 박사과정을 모두 마치고, 현재 전북대학교와 군산대학교에서 비판적사고, 언어철학, 인식론 등을 가르치고 있습니다. 저의 메세지가 여러분의 삶에 조금이라도 도움이 되기를 희망합니다. 감사합니다.
+        </p>
+      </div>
+    </section>
 
     <section id="papers" class="alt">
       <div class="wrap">
@@ -319,58 +340,51 @@
     </section>
 
     <section id="writing">
-  <div class="wrap">
-    <h2>글쓰기 작업</h2>
-    <p class="section-intro">
-      별도 읽기 페이지에서 편하게 읽도록 구성했습니다.
-    </p>
-    <div class="item-grid">
-      <article class="item-card">
-        <div class="item-title">정답이 먼저 돈다</div>
-        <div class="item-meta">단편</div>
-        <div class="item-desc">내가 근거 없는 소문의 전파자가 될 수 있다는 내용의 소설입니다.</div>
-        <a class="item-link" href="stories/story-1.html">작품 읽기</a>
-      </article>
+      <div class="wrap">
+        <h2>글쓰기 작업</h2>
+        <p class="section-intro">
+          별도 읽기 페이지에서 편하게 읽도록 구성했습니다.
+        </p>
+        <div class="item-grid">
+          <article class="item-card">
+            <div class="item-title">정답이 먼저 돈다</div>
+            <div class="item-meta">단편</div>
+            <div class="item-desc">내가 근거 없는 소문의 전파자가 될 수 있다는 내용의 소설입니다.</div>
+            <a class="item-link" href="stories/story-1.html">작품 읽기</a>
+          </article>
 
-      <article class="item-card">
-        <div class="item-title">보편적 일반화와 통계적 일반화</div>
-        <div class="item-meta">글</div>
-        <div class="item-desc">우리가 늘 하던 생각이 편견과 고정관점으로 이어질 수 있음을 역사적 사례를 들어 설명한 글입니다.</div>
-        <a class="item-link" href="stories/story-2.html">작품 읽기</a>
-      </article>
+          <article class="item-card">
+            <div class="item-title">보편적 일반화와 통계적 일반화</div>
+            <div class="item-meta">글</div>
+            <div class="item-desc">우리가 늘 하던 생각이 편견과 고정관점으로 이어질 수 있음을 역사적 사례를 들어 설명한 글입니다.</div>
+            <a class="item-link" href="stories/story-2.html">작품 읽기</a>
+          </article>
 
-      <article class="item-card">
-        <div class="item-title">비판적 사고</div>
-        <div class="item-meta">책 프로젝트</div>
-        <div class="item-desc">스스로 판단하는 법을 다룬 글입니다.</div>
-        <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
-      </article>
-    </div>
-  </div>
-</section>
-    
+          <article class="item-card">
+            <div class="item-title">비판적 사고</div>
+            <div class="item-meta">책 프로젝트</div>
+            <div class="item-desc">스스로 판단하는 법을 다룬 글입니다.</div>
+            <a class="item-link" href="#" onclick="return false;">링크 추가 예정</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="photos" class="alt">
       <div class="wrap">
         <h2>사진</h2>
-        <p class="section-intro">
-          사진은 최소한으로 두고, 사이트 전체 분위기를 해치지 않는 선에서 대표 이미지 몇 장만 올리는 구성을 권합니다.
-        </p>
         <div class="photo-grid">
           <div class="photo-card">
-            <img src="images/photo-1.jpeg" alt="대표 사진 1" />
-            <div class="photo-caption">대표 사진 1</div>
+            <img src="images/photo-1.jpeg" alt="대표 사진 1" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
           <div class="photo-card">
-            <img src="images/photo-2.jpeg" alt="대표 사진 2" />
-            <div class="photo-caption">대표 사진 2</div>
+            <img src="images/photo-2.jpeg" alt="대표 사진 2" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
           <div class="photo-card">
-            <img src="images/photo-3.jpeg" alt="대표 사진 3" />
-            <div class="photo-caption">대표 사진 3</div>
+            <img src="images/photo-3.jpeg" alt="대표 사진 3" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
           <div class="photo-card">
-            <img src="images/photo-4.jpeg" alt="대표 사진 4" />
-            <div class="photo-caption">대표 사진 4</div>
+            <img src="images/photo-4.jpeg" alt="대표 사진 4" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
         </div>
       </div>
@@ -379,7 +393,7 @@
     <section id="contact">
       <div class="wrap">
         <h2>연락</h2>
-        <div class="contact-box card">
+        <div class="contact-box">
           <p>e-Mail: <a href="mailto:yonghochoi0909@gmail.com">yonghochoi0909@gmail.com</a></p>
           <p>Google Scholar: <a href="https://scholar.google.com/citations?user=_nx73p0AAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">프로필 보기</a></p>
           <p>ORCID: <a href="https://orcid.org/0000-0001-7343-6970" target="_blank" rel="noopener noreferrer">0000-0001-7343-6970</a></p>
@@ -391,5 +405,30 @@
   <footer>
     <div class="wrap">© 2026 Choi Yongho. All rights reserved.</div>
   </footer>
+
+  <div id="photoModal" class="photo-modal" onclick="closePhotoModal()">
+    <span class="photo-modal-close" onclick="closePhotoModal()">&times;</span>
+    <img id="photoModalImg" src="" alt="" onclick="event.stopPropagation()" />
+  </div>
+
+  <script>
+    function openPhotoModal(src, alt) {
+      const modal = document.getElementById("photoModal");
+      const modalImg = document.getElementById("photoModalImg");
+      modalImg.src = src;
+      modalImg.alt = alt || "";
+      modal.classList.add("open");
+    }
+
+    function closePhotoModal() {
+      document.getElementById("photoModal").classList.remove("open");
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closePhotoModal();
+      }
+    });
+  </script>
 </body>
 </html>
