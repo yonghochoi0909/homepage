@@ -359,33 +359,24 @@
     }
 
     .photo-card {
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: var(--card);
-      box-shadow: var(--shadow);
+      background: white;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
     }
 
-    .photo-trigger {
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .photo-trigger img {
+    .photo-card img {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
-      transition: transform 0.22s ease, filter 0.22s ease;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .photo-trigger:hover img {
-      transform: scale(1.03);
-      filter: saturate(1.02);
+    .photo-card img:hover {
+      transform: scale(1.02);
     }
 
     .contact-box {
@@ -648,96 +639,21 @@
     <section id="photos" class="alt">
       <div class="wrap">
         <h2>Photos</h2>
-        <p class="section-intro">
-          Scenes that invite pause rather than simply record a place, drawn from ordinary moments and landscapes.
-        </p>
         <div class="photo-grid">
           <div class="photo-card">
-            <button
-              class="photo-trigger"
-              type="button"
-              data-photo-trigger
-              data-full="../images/photo-1.jpeg"
-              data-alt="Featured photograph 1"
-              aria-haspopup="dialog"
-              aria-controls="photoModal"
-              aria-label="Open featured photograph 1"
-            >
-              <img
-                src="../images/photo-1.jpeg"
-                alt="Featured photograph 1"
-                loading="lazy"
-                decoding="async"
-                width="1256"
-                height="884"
-              />
-            </button>
+            <img src="../images/photo-1.jpeg" alt="Featured photograph 1" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
 
           <div class="photo-card">
-            <button
-              class="photo-trigger"
-              type="button"
-              data-photo-trigger
-              data-full="../images/photo-2.jpeg"
-              data-alt="Featured photograph 2"
-              aria-haspopup="dialog"
-              aria-controls="photoModal"
-              aria-label="Open featured photograph 2"
-            >
-              <img
-                src="../images/photo-2.jpeg"
-                alt="Featured photograph 2"
-                loading="lazy"
-                decoding="async"
-                width="3024"
-                height="4032"
-              />
-            </button>
+            <img src="../images/photo-2.jpeg" alt="Featured photograph 2" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
 
           <div class="photo-card">
-            <button
-              class="photo-trigger"
-              type="button"
-              data-photo-trigger
-              data-full="../images/photo-3.jpeg"
-              data-alt="Featured photograph 3"
-              aria-haspopup="dialog"
-              aria-controls="photoModal"
-              aria-label="Open featured photograph 3"
-            >
-              <img
-                src="../images/photo-3.jpeg"
-                alt="Featured photograph 3"
-                loading="lazy"
-                decoding="async"
-                width="1818"
-                height="2424"
-              />
-            </button>
+            <img src="../images/photo-3.jpeg" alt="Featured photograph 3" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
 
           <div class="photo-card">
-            <button
-              class="photo-trigger"
-              type="button"
-              data-photo-trigger
-              data-full="../images/photo-4.jpeg"
-              data-alt="Featured photograph 4"
-              aria-haspopup="dialog"
-              aria-controls="photoModal"
-              aria-label="Open featured photograph 4"
-            >
-              <img
-                src="../images/photo-4.jpeg"
-                alt="Featured photograph 4"
-                loading="lazy"
-                decoding="async"
-                width="1142"
-                height="832"
-              />
-            </button>
+            <img src="../images/photo-4.jpeg" alt="Featured photograph 4" onclick="openPhotoModal(this.src, this.alt)" />
           </div>
         </div>
       </div>
