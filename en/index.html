@@ -352,6 +352,73 @@
       border: 1px solid #dbe4ee;
     }
 
+    .aphorism-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .aphorism-date {
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.96);
+      color: #475569;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .aphorism-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .aphorism-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 100%;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.82));
+      box-shadow: var(--shadow);
+    }
+
+    .aphorism-kicker {
+      color: #64748b;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .aphorism-title {
+      margin: 0;
+      font-size: 1.16rem;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .aphorism-quote {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    .aphorism-source {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
     .photo-grid {
       display: grid;
       gap: 16px;
@@ -476,6 +543,10 @@
         grid-template-columns: 1fr;
       }
 
+      .aphorism-grid {
+        grid-template-columns: 1fr;
+      }
+
       .photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -532,6 +603,7 @@
           <a href="#about">About</a>
           <a href="#papers">Papers</a>
           <a href="#writing">Writing</a>
+          <a href="#aphorisms">Wisdom</a>
           <a href="#photos">Photos</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -643,6 +715,23 @@
       </div>
     </section>
 
+    <section id="aphorisms" class="alt">
+      <div class="wrap">
+        <div class="aphorism-header">
+          <div>
+            <h2>Daily Aphorisms</h2>
+            <p class="section-intro">
+              Three aphorisms are selected each day from a curated set of thirty passages drawn from Baltasar Gracian's
+              <em>The Art of Worldly Wisdom</em>. The rotation follows the Seoul date and is based on
+              <a href="https://www.sacred-texts.com/eso/aww/" target="_blank" rel="noopener noreferrer">Joseph Jacobs's 1892 public-domain translation</a>.
+            </p>
+          </div>
+          <div id="aphorismDate" class="aphorism-date" aria-live="polite"></div>
+        </div>
+        <div id="aphorismGrid" class="aphorism-grid"></div>
+      </div>
+    </section>
+
     <section id="photos" class="alt">
       <div class="wrap">
         <h2>Photos</h2>
@@ -695,7 +784,10 @@
     <img id="photoModalImg" src="" alt="" />
   </div>
 
+  <script src="../gracian-aphorisms.js"></script>
   <script>
+    renderDailyAphorisms({ locale: "en" });
+
     const modal = document.getElementById("photoModal");
     const modalImg = document.getElementById("photoModalImg");
     const modalCloseButton = document.querySelector(".photo-modal-close");
